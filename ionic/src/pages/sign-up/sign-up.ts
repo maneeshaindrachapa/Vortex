@@ -23,7 +23,7 @@ export class SignUpPage {
       }
     },
       error => {
-        this.showPopup("Error", error);
+        this.showPopup("Error", "Invaild User Details");
       });
   }
  

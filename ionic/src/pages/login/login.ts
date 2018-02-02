@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, AlertController, LoadingController, Loading, IonicPage } from 'ionic-angular';
 import { AuthServiceProvider} from '../../providers/auth-service/auth-service';
+import { ForgetpasswordPage } from '../forgetpassword/forgetpassword';
  
 @IonicPage()
 @Component({
@@ -18,6 +19,11 @@ export class LoginPage {
   public createAccount() {
     this.nav.push('SignUpPage');
   }
+
+  //navigate to forget password
+  public forgetpassword(){
+    this.nav.push("ForgetpasswordPage");
+  }
   
   //when click the login button
   public login() {
@@ -27,17 +33,13 @@ export class LoginPage {
         console.log(allowed.type);
         if(allowed.type=="1"){      
           this.nav.setRoot('HomePage');
-        }else if(allowed.type=="2"){
-          this.nav.setRoot('OwnersPage');
-        }else if(allowed.type=="3"){
-          this.nav.setRoot('AdminPage');
         }
       }else {
         this.showError("Access Denied");
       }
     },
       error => {
-        this.showError("Credentials are not matching");
+        this.showError("Invaild Credentials");
       });
   }
  

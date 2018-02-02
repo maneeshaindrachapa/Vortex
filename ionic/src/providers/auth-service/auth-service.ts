@@ -19,16 +19,16 @@ export class AuthServiceProvider {
     } else {
       var headers= new Headers();
       headers.append('Content-Type','application/X-www-form=urlencoded');
-      return this.http.post("http://localhost/carbon/api/login.php",{"username":credentials.username,"password":credentials.password}).map(res=>res.json());
+      return this.http.post("http://localhost/VortexApp/api/login.php",{"username":credentials.username,"password":credentials.password}).map(res=>res.json());
     }
   }
  
   //register
   public register(credentials) {
-    if (credentials.email === null || credentials.password === null||credentials.firstname === null||credentials.lastname === null) {
-      return Observable.throw("Please insert credentials");
+    if (credentials.email === null || credentials.password === null||credentials.firstname === null||credentials.lastname === null||credentials.email==null) {
+      return Observable.throw("Please insert your credentials");
     } else {
-      return this.http.post("http://localhost/carbon/api/signup.php",{"username":credentials.username,"firstname":credentials.firstname,"lastname":credentials.lastname,"password":credentials.password}).map(res=>res.json());
+      return this.http.post("http://localhost/VortexApp/api/signup.php",{"username":credentials.username,"firstname":credentials.firstname,"lastname":credentials.lastname,"password":credentials.password,"email":credentials.email}).map(res=>res.json());
     }
   }
   
