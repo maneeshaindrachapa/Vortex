@@ -7,7 +7,7 @@
       <button ion-button (click)="logout()">
         <ion-icon name="log-out"></ion-icon>
       </button>
-      <button ion-button >
+      <button ion-button  (click)="createBallot()">
         <ion-icon name="ios-pulse"></ion-icon>
       </button>
       </ion-buttons>
@@ -20,19 +20,19 @@
   <ion-list>
   <ion-item *ngFor="let item of items">
     <ion-card class="ion-card">
-      <!--img src="{{item.profilePic}}"/-->
+      <img src="{{item.image}}"/>
       <ion-card-content>
         <ion-card-title class="ion-card-title">
           {{item.votingballotName}}
-          </ion-card-title>
+        </ion-card-title>
         <p style="white-space:pre-line;">
           {{item.votingballotDescription}}
         </p><br>
-        Strat Time : {{item.startTime}} <br>
-        End Time : {{item.endTime}}<br>
+        Strat Time :{{item.startDate}} {{item.startTime}} <br>
+        End Time : {{item.endDate}} {{item.endTime}}<br>
 
         <!--button ion-button icon-left clear small (click)="loadProducts(item.shop_id)"-->
-        <ion-icon name="stats"><span>View Results </span></ion-icon>
+        <ion-icon name="stats"></ion-icon><span>View Results </span>
           
         <!--/button-->
       </ion-card-content>

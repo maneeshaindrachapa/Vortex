@@ -1,0 +1,55 @@
+<ion-header>
+
+  <ion-navbar color="dark">
+    <ion-title>Create Voting Ballot</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content class="ballot-content" padding>
+  <form (ngSubmit)="createBallot()" #ballotForm="ngForm">
+    <ion-row>
+      <ion-col>
+        <ion-list inset>
+          
+          <ion-item>
+            <ion-input type="text" placeholder="Ballot Name" name="ballotName" [(ngModel)]="ballotDetails.ballotName" required></ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-input type="text" placeholder="Ballot Description" name="ballotDescription" [(ngModel)]="ballotDetails.ballotDescription" required></ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-datetime type="datetime" placeholder="Starting Date" displayFormat="MM/DD/YYYY" name="startDate" [(ngModel)]="ballotDetails.startDate" required></ion-datetime>
+          </ion-item>
+
+          <ion-item>
+            <ion-datetime type="datetime" placeholder="Starting Time" displayFormat="HH:mm:ss" name="startTime" [(ngModel)]="ballotDetails.startTime" required></ion-datetime>
+          </ion-item>
+
+          <ion-item>
+            <ion-datetime type="datetime" placeholder="Ending Date" displayFormat="MM/DD/YYYY" name="endDate" [(ngModel)]="ballotDetails.endDate" required></ion-datetime>
+          </ion-item>
+
+          <ion-item>
+            <ion-datetime type="datetime" placeholder="Ending Time" displayFormat="HH:mm:ss" name="endTime" [(ngModel)]="ballotDetails.endTime" required></ion-datetime>
+          </ion-item>
+          
+          <ion-item>
+            <ion-input type="text" placeholder="Featured Image URL" name="url" [(ngModel)]="ballotDetails.url" required></ion-input>
+          </ion-item>
+
+        </ion-list>
+      </ion-col>
+    </ion-row>
+    
+    <ion-row>
+      <ion-col class="ballot-col">
+        <button ion-button class="submit-btn" full type="submit" [disabled]="!ballotForm.form.valid">Create Ballot</button>
+      </ion-col>
+    </ion-row>
+    
+  </form>
+</ion-content>

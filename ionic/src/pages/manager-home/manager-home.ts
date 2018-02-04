@@ -17,11 +17,11 @@ export class ManagerHomePage {
   constructor(public nav: NavController, public navParams: NavParams,private auth:AuthServiceProvider) {
     this.initializeItems();
   }
+
   //initialize items
   initializeItems(){
     this.auth.getVotingBallots().subscribe(ballots => {
       for(let i in ballots){
-        console.log(ballots[i]);
         this.items.push(ballots[i]);
         this.ballots.push(ballots[i]);
       }
@@ -35,6 +35,7 @@ export class ManagerHomePage {
     this.items=this.ballots;
   }
 
+  //search bar function
   getVotingBallotDetails(ev: any) {
     // Reset items back to all of the items
     this.initializeSearch();
@@ -60,12 +61,20 @@ export class ManagerHomePage {
       this.nav.setRoot('LoginPage')
     });
   }
+
+  //creating voting ballot
+  public createBallot(){
+    this.nav.push('CreateVotingBallotPage');
+  }
 }
 
 interface VotingBallots{
   votingballotID:number,
   votingballotName:string,
-  votingballotDescription:string
-  startTime:DateTime;
-  endTime:DateTime;
+  votingballotDescription:string,
+  startDate:Date,
+  startTime:DateTime,
+  endDate:Date,
+  endTime:DateTime,
+  image:string
 }
