@@ -45,7 +45,7 @@ class Validation{
 
     //name validation
     public function is_name_valid($Name){
-        $string_exp = "/^[A-Za-z0-9 .'-]+$/";
+        $string_exp = "/^[A-Za-z]+$/";
         if(preg_match($string_exp,$Name)) {
             return true;
         }

@@ -30,9 +30,12 @@ export class LoginPage {
    this.showLoading()
     this.auth.login(this.registerCredentials).subscribe(allowed => {
       if (allowed){ 
+        this.auth.setUser(allowed.username); //setting username
         console.log(allowed.type);
         if(allowed.type=="1"){      
-          this.nav.setRoot('HomePage');
+          this.nav.setRoot('EmployeeHomePage');
+        }else if(allowed.type=="2"){
+          this.nav.setRoot('ManagerHomePage');
         }
       }else {
         this.showError("Access Denied");

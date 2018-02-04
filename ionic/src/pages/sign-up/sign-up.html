@@ -31,8 +31,8 @@
             </ion-item>
             
             <ion-item>
-              <ion-select>
-                <ion-option value=1>sdsd</ion-option>
+              <ion-select *ngFor="let organization of organizations">
+                <ion-option value="{{organization.organizationsID}}"><strong>{{organization.organizationName}}:</strong>{{organization.organizationAddress}}</ion-option>
               </ion-select>
             </ion-item>
 

@@ -18,6 +18,7 @@ if(sizeof($data)!=null){
     $password=$data->password;
     $email=$data->email;
     $type=1; //this is for normal users
+    $organiztionID=$data->organizationID;
 
     //check validation with regular expressions
     $tempFirstname=$validation->is_name_valid($firstname);
@@ -40,7 +41,7 @@ if(sizeof($data)!=null){
     }
 
     if($tempFirstname && $tempLastname && $tempEmail){
-        $query="INSERT INTO user(username,firstname,lastname,password,email,type) VALUES('$username','$firstname','$lastname',MD5('$password'),'$email','$type')";
+        $query="INSERT INTO user(username,firstname,lastname,password,email,type,organizationID) VALUES('$username','$firstname','$lastname',MD5('$password'),'$email','$type','$organiztionID')";
 
         $dataExecute=$crud->execute($query);
         echo json_encode($dataExecute);
