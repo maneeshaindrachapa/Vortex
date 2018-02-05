@@ -44,7 +44,7 @@
           </ion-item>
 
           <ion-item *ngFor="let option of ballotOptions;let i=index" >
-              <ion-input type="text" placeholder="Option {{i+1}}" required></ion-input>
+              <ion-input type="text" placeholder="Option {{i+1}}"  name="option{{i+1}}" [(ngModel)]="ballotOptionsContainer[i]" required></ion-input>
           </ion-item>
 
         </ion-list>
