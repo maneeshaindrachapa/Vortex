@@ -1,9 +1,7 @@
 <ion-header>
-
   <ion-navbar color="dark">
     <ion-title>Create Voting Ballot</ion-title>
   </ion-navbar>
-
 </ion-header>
 
 
@@ -41,6 +39,14 @@
             <ion-input type="text" placeholder="Featured Image URL" name="url" [(ngModel)]="ballotDetails.url" required></ion-input>
           </ion-item>
 
+          <ion-item>
+            <ion-input type="number" min="0" max="5" step="1" placeholder="Number of Options" name="noOfOptions" [(ngModel)]="noOfOptions" (ngModelChange)="onChange($event)" required></ion-input>
+          </ion-item>
+
+          <ion-item *ngFor="let option of ballotOptions;let i=index" >
+              <ion-input type="text" placeholder="Option {{i+1}}" required></ion-input>
+          </ion-item>
+
         </ion-list>
       </ion-col>
     </ion-row>
@@ -52,4 +58,6 @@
     </ion-row>
     
   </form>
+
+
 </ion-content>
