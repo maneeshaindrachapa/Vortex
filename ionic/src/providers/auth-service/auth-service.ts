@@ -58,4 +58,9 @@ export class AuthServiceProvider {
   public getVotingBallots(){
     return this.http.get("http://localhost/VortexApp/api/getVotingBallots.php").map(res=>res.json());
   }
+
+  //forget password send email
+  public sendEmail(email){
+    return this.http.post("http://localhost/VortexApp/api/forgetPassword.php",{"email":email}).map(res=>res.json());
+  }
 }

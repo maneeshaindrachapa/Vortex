@@ -1,12 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
-/**
- * Generated class for the ForgetpasswordPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { AuthServiceProvider} from '../../providers/auth-service/auth-service';
 
 @IonicPage()
 @Component({
@@ -14,12 +8,15 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'forgetpassword.html',
 })
 export class ForgetpasswordPage {
-
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  email="";
+  constructor(public nav: NavController,private auth:AuthServiceProvider) {
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad ForgetpasswordPage');
+  sendEmail(){
+    this.auth.sendEmail(this.email).subscribe(ballots => {
+     },
+     error => {
+       console.log(error);
+     });
   }
-
 }
