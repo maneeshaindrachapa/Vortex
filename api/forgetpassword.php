@@ -12,6 +12,13 @@
     $data=json_decode(file_get_contents("php://input"));
     if(sizeof($data)!=0){
         $email=$data->email;
+        $currentTime=date('Y-m-d H:i:s');
+
+        $expirationTime=new DateTime($currentTime);
+        $expirationTime->modify('+15 minutes');
+        $expirationTime=$expirationTime->format('Y-m-d H:i:s');
+        
+        print_r($expirationTime);
 
         try{
             //start transaction
@@ -20,7 +27,7 @@
 
             $query2="SELECT email FROM user where email='$email'";
             $data2=$crud->getData($query2);
-            if(sizeof($data)==1){
+            if(sizeof($data2)==1){
                 
                 $mail = new PHPMailer(true);                                // Passing `true` enables exceptions
                 try {
@@ -48,13 +55,13 @@
                     //Content
                     $mail->isHTML(true); // Set email format to HTML
                     $mail->Subject = 'Vortex-Forget Password';
-                    $mail->Body    = 'This is the HTML message body <b>in bold!</b>';
+                    $mail->Body    = 'This is the Code to ';
 
                     if($mail->send()){
                         $query3="SELECT email from forgetpassword where email='$email'";
                         $data3=$crud->getData($query3);
                         if(sizeof($data3)==null){
-                            $query4="INSERT INTO forgetpassword(email,randomCode) values('$email','$randomNumber')";
+                            $query4="INSERT INTO forgetpassword(email,randomCode,addedTime,expirationTime) values('$email','$randomNumber','$currentTime','$expirationTime')";
                             $data4=$crud->execute($query4);
                         }else{
                             $query5="UPDATE forgetpassword set randomCode='$randomNumber' where email='$email'";
