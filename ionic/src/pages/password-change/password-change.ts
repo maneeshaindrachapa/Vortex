@@ -21,9 +21,19 @@ export class PasswordChangePage {
   checkCode(){
     this.showLoading();
     if(this.code!=null){
-      this.loading.dismiss();
       this.fp.checkCode(this.email,this.code).subscribe(code => {
-        this.correct=true;
+        if(code=="0"){   
+          this.loading.dismiss();
+          this.correct=true;
+          this.code=null;
+        }
+        else if(code=="1"){
+          this.showError('Time Expired');
+          this.correct=false;
+        }else if(code=="2"){
+          this.showError("6 Digit Code Entered is Incorrect");
+          this.correct=false;
+        }
       },
       error => {
         this.showError('There is an Error');

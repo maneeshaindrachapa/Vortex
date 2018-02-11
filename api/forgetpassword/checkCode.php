@@ -18,14 +18,17 @@
         $randomCode=$data1[0]['randomCode'];
        
         if($code==$randomCode){
+            $temp_current_time = strtotime($currentTime);
+            $temp_expiration_time = strtotime($expirationTime);
+            
             //differntiatiateTime
-            if($currentTime<$expirationTime){
-                echo json_encode($data1[0]);
+            if(($temp_expiration_time-$temp_current_time)>0){
+                echo json_encode("0"); //password changed allowed
             }else{
-                echo "Time Expired";
+                echo json_encode("1");//time expired
             }
         }else{
-            echo "Code Error";
+            echo json_encode("2");//code error
         }
     }
 
