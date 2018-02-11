@@ -17,6 +17,7 @@ export class ForgetpasswordPage {
     this.showLoading();
     if(this.email!=""){
       this.fp.sendEmail(this.email).subscribe(mail => {
+        this.fp.setEmail(this.email);
         this.nav.push("PasswordChangePage");
       },
       error => {
