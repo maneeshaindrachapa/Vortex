@@ -3,8 +3,8 @@
     use PHPMailer\PHPMailer\Exception;
 
     //Load composer's autoloader for php mailer
-    require 'PHPMailer/vendor/autoload.php';
-    include "Crud.php";
+    require '../PHPMailer/vendor/autoload.php';
+    include "../Crud.php";
 
     $crud=new Crud();
     $randomNumber=mt_rand(100000,1000000); //making random code to change the password
@@ -70,7 +70,7 @@
 
                             echo json_encode($data4);
                         }else{
-                            $query5="UPDATE forgetpassword set randomCode='$randomNumber' where email='$email'";
+                            $query5="UPDATE forgetpassword set randomCode='$randomNumber',addedTime='$currentTime',expirationTime='$expirationTime' where email='$email'";
                             $data5=$crud->execute($query5);
 
                             echo json_encode($data5);
