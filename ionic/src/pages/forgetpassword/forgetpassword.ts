@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController,LoadingController, Loading } from 'ionic-angular';
 import {ForgetPasswordProvider} from '../../providers/forget-password/forget-password';
 
 @IonicPage()
@@ -9,15 +9,40 @@ import {ForgetPasswordProvider} from '../../providers/forget-password/forget-pas
 })
 export class ForgetpasswordPage {
   email="";
-  constructor(public nav: NavController,private fp:ForgetPasswordProvider) {
+  loading: Loading;
+  constructor(public nav: NavController,private fp:ForgetPasswordProvider,private alert:AlertController,private loadingCtrl: LoadingController) {
   }
 
   sendEmail(){
-    this.fp.sendEmail(this.email).subscribe(mail => {
-      this.nav.push("PasswordChangePage");
-    },
-     error => {
-       console.log(error);
-     });
+    this.showLoading();
+    if(this.email!=""){
+      this.fp.sendEmail(this.email).subscribe(mail => {
+        this.nav.push("PasswordChangePage");
+      },
+      error => {
+        this.showError('There is an Error Sending Mail');
+        console.log(error);
+      });
+    }else{
+      this.showError("Please Enter Your E-mail");
+    }
+  }
+
+  showError(text) {
+    this.loading.dismiss();
+    let alert = this.alert.create({
+      title: 'Error',
+      subTitle: text,
+      buttons: ['OK']
+    });
+    alert.present();
+  }
+
+  showLoading() {
+    this.loading = this.loadingCtrl.create({
+      content: 'E-mail Sending...',
+      dismissOnPageChange: true
+    });
+    this.loading.present();
   }
 }

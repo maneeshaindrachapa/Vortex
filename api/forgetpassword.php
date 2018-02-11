@@ -67,9 +67,13 @@
                         if(sizeof($data3)==null){
                             $query4="INSERT INTO forgetpassword(email,randomCode,addedTime,expirationTime) values('$email','$randomNumber','$currentTime','$expirationTime')";
                             $data4=$crud->execute($query4);
+
+                            echo json_encode($data4);
                         }else{
                             $query5="UPDATE forgetpassword set randomCode='$randomNumber' where email='$email'";
                             $data5=$crud->execute($query5);
+
+                            echo json_encode($data5);
                         }
                     }
                 } catch (Exception $e) {
@@ -79,8 +83,7 @@
             //end transaction
             $query7="commit";
             $data7=$crud->execute($query7);
-
-            echo json_encode($data7);
+            
         }catch(Exception $e){
             echo "SQL Exception";
         }
