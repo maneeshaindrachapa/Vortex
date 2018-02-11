@@ -18,8 +18,6 @@
         $expirationTime->modify('+15 minutes');
         $expirationTime=$expirationTime->format('Y-m-d H:i:s');
         
-        print_r($expirationTime);
-
         try{
             //start transaction
             $query1="Start transaction";
@@ -55,7 +53,13 @@
                     //Content
                     $mail->isHTML(true); // Set email format to HTML
                     $mail->Subject = 'Vortex-Forget Password';
-                    $mail->Body    = 'This is the Code to ';
+                    $mail->Body    = '<h1 style="text-align: center;"><span style="text-decoration: underline;">Vortex</span></h1>
+                    <p style="text-align: justify;">Hi,</p>
+                    <p style="text-align: justify;">You recently request to rest your password for your account, use the code below to reset your password. This password reset code is only valid for the next 10 minutes</p>
+                    <h3 style="text-align: center;">'.$randomNumber.'</h3>
+                    <p style="text-align: justify;">For security,If you didnot request a password reset, please ignore this email</p>
+                    <p style="text-align: left;">Thanks,</p>
+                    <p style="text-align: left;">Team Vortex</p>';
 
                     if($mail->send()){
                         $query3="SELECT email from forgetpassword where email='$email'";
@@ -69,7 +73,7 @@
                         }
                     }
                 } catch (Exception $e) {
-                    echo 'Message could not be sent. Mailer Error: ';
+                    echo 'Message could not be sent. Mailer Error';
                 }
             }
             //end transaction

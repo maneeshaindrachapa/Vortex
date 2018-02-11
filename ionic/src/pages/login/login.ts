@@ -27,7 +27,7 @@ export class LoginPage {
   
   //when click the login button
   public login() {
-   this.showLoading()
+   this.showLoading();
     this.auth.login(this.registerCredentials).subscribe(allowed => {
       if (allowed){ 
         this.auth.setUser(allowed.username); //setting username

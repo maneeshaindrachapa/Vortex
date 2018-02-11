@@ -9,6 +9,7 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { AuthServiceProvider } from '../providers/auth-service/auth-service';
 import { BallotServiceProvider } from '../providers/ballot-service/ballot-service';
+import { ForgetPasswordProvider } from '../providers/forget-password/forget-password';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { BallotServiceProvider } from '../providers/ballot-service/ballot-servic
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     AuthServiceProvider,
-    BallotServiceProvider
+    BallotServiceProvider,
+    ForgetPasswordProvider
   ]
 })
 export class AppModule {}

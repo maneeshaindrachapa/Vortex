@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { AuthServiceProvider} from '../../providers/auth-service/auth-service';
+import {ForgetPasswordProvider} from '../../providers/forget-password/forget-password';
 
 @IonicPage()
 @Component({
@@ -9,12 +9,13 @@ import { AuthServiceProvider} from '../../providers/auth-service/auth-service';
 })
 export class ForgetpasswordPage {
   email="";
-  constructor(public nav: NavController,private auth:AuthServiceProvider) {
+  constructor(public nav: NavController,private fp:ForgetPasswordProvider) {
   }
 
   sendEmail(){
-    this.auth.sendEmail(this.email).subscribe(ballots => {
-     },
+    this.fp.sendEmail(this.email).subscribe(mail => {
+      this.nav.push("PasswordChangePage");
+    },
      error => {
        console.log(error);
      });
