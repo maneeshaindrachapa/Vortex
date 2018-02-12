@@ -32,4 +32,8 @@ export class ForgetPasswordProvider {
     return this.http.post("http://localhost/VortexApp/api/forgetpassword/checkCode.php",{"email":email,"code":code}).map(res=>res.json());
   }
 
+  //change password
+  public changePassword(email,password){
+    return this.http.post("http://localhost/VortexApp/api/forgetpassword/changePassword.php",{"email":email,"password":password}).map(res=>res.json());
+  }
 }

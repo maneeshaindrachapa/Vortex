@@ -19,7 +19,7 @@ export class PasswordChangePage {
   }
 
   checkCode(){
-    this.showLoading();
+    this.showLoading("Code Checking...");
     if(this.code!=null){
       this.fp.checkCode(this.email,this.code).subscribe(code => {
         if(code=="0"){   
@@ -54,11 +54,33 @@ export class PasswordChangePage {
     alert.present();
   }
 
-  showLoading() {
+  showLoading(text) {
     this.loading = this.loadingCtrl.create({
-      content: 'Code Checking...',
+      content: text,
       dismissOnPageChange: true
     });
     this.loading.present();
+  }
+
+  changePassword(){
+    this.showLoading("Waiting.....");
+    this.fp.changePassword(this.email,this.password).subscribe(password => {
+      this.showSuccess("Password Changed Succesfully");
+      this.nav.push("LoginPage");
+    },
+    error => {
+      this.showError('There is an Error');
+      
+    });
+  }
+
+  showSuccess(text) {
+    this.loading.dismiss();
+    let alert = this.alert.create({
+      title: 'Success',
+      subTitle: text,
+      buttons: ['OK']
+    });
+    alert.present();
   }
 }
