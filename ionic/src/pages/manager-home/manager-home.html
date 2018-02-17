@@ -19,6 +19,17 @@
 <!--managers cannot vote so managers can see all the votingPolls on going in thier organization-->
 <ion-content>
   <ion-searchbar (ionInput)="getVotingBallotDetails($event)"></ion-searchbar>
+
+<!-- added a refresher to refresh page-->
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+      <ion-refresher-content
+        pullingIcon="arrow-dropdown"
+        pullingText="Pull to refresh"
+        refreshingSpinner="circles"
+        refreshingText="Refreshing...">
+      </ion-refresher-content>
+    </ion-refresher>
+
   <ion-list>
   <ion-item *ngFor="let item of items">
     <ion-card class="ion-card">

@@ -26,6 +26,6 @@ export class MenubarPage {
     this.nav.push(pagename);
   }
 
-  //close menu
+  
 
 }

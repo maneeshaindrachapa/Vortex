@@ -56,6 +56,16 @@ export class ManagerHomePage {
     return false;
   }
 
+  //refresh Page
+  doRefresh(refresher) {
+    console.log('Begin async operation', refresher);
+    this.items=[];
+    this.initializeItems();
+
+    setTimeout(() => {
+      refresher.complete();
+    }, 2000);
+  }
   //user logout
   logout(){
     this.auth.logout().subscribe(succ => {
@@ -66,7 +76,6 @@ export class ManagerHomePage {
   openMenu(){
     this.menuCtrl.open();
   }
-
 }
 
 interface VotingBallots{
