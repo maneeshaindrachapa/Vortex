@@ -7,14 +7,37 @@
       <button ion-button (click)="logout()">
         <ion-icon name="log-out"></ion-icon>
       </button>
-      <button ion-button >
-        <ion-icon ios="ios-cart" md="md-cart"></ion-icon>
+      <button ion-button (click)="editProfile()">
+        <ion-icon name="contact"></ion-icon>
       </button>
       </ion-buttons>
   </ion-navbar>
 </ion-header>
 
 
-<ion-content padding>
+<ion-content>
+  <ion-searchbar (ionInput)="getVotingBallotDetails($event)"></ion-searchbar>
+  <ion-list>
+  <ion-item *ngFor="let item of items">
+    <ion-card class="ion-card">
+      <img src="{{item.image}}"/>
+      <ion-card-content>
+        <ion-card-title class="ion-card-title">
+          {{item.votingballotName}}
+        </ion-card-title>
+        <p class="ion-card-paragraph"style="white-space:pre-line;">
+          {{item.votingballotDescription}}
+        </p><br>
+        <ion-icon name="timer"></ion-icon>&nbsp;
+        <span class="ion-card-details" >{{item.startDate}} | {{item.startTime}}</span><br>
+        <ion-icon name="stopwatch"></ion-icon>&nbsp;
+        <span class="ion-card-details">{{item.endDate}} | {{item.endTime}}</span><br>
 
+        <button ion-button icon-right clear small >
+          <ion-icon name="stats"></ion-icon>&nbsp;<span class="ion-card-details">View Results</span>  
+        </button>
+      </ion-card-content>
+    </ion-card>
+  </ion-item>
+  </ion-list>
 </ion-content>

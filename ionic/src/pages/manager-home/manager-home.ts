@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { AuthServiceProvider} from '../../providers/auth-service/auth-service';
 import { DateTime } from 'ionic-angular/components/datetime/datetime';
+import { MenuController } from 'ionic-angular';
 
 @IonicPage()
 @Component({
@@ -14,7 +15,7 @@ export class ManagerHomePage {
   ballots:VotingBallots[]=[];
   items:VotingBallots[]=[];
 
-  constructor(public nav: NavController, public navParams: NavParams,private auth:AuthServiceProvider) {
+  constructor(public nav: NavController, public navParams: NavParams,private auth:AuthServiceProvider,public menuCtrl:MenuController) {
     this.initializeItems();
   }
 
@@ -61,11 +62,11 @@ export class ManagerHomePage {
       this.nav.setRoot('LoginPage')
     });
   }
-
-  //creating voting ballot
-  public createBallot(){
-    this.nav.push('CreateVotingBallotPage');
+  //menu open
+  openMenu(){
+    this.menuCtrl.open();
   }
+
 }
 
 interface VotingBallots{

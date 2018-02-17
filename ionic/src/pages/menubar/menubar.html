@@ -1,0 +1,21 @@
+<ion-menu [content]="content">
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>Menu</ion-title>
+    </ion-toolbar>
+  </ion-header>
+ 
+  <ion-content>
+    <ion-list>
+      <button ion-item (click)="openPage('CreateVotingBallotPage')">
+        <ion-icon name="pulse"></ion-icon>Create Voting Ballot
+      </button>
+      <button ion-item (click)="openPage('EditProfilePage')">
+          <ion-icon name="contact"></ion-icon>Edit Profile
+      </button>
+    </ion-list>
+  </ion-content>
+</ion-menu>
+ 
+<!-- main navigation -->
+<ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>

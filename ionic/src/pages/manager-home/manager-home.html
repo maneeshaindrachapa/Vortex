@@ -1,14 +1,16 @@
 <ion-header>
   <ion-navbar color="dark">
+    <ion-buttons>
+        <button ion-button (click)="openMenu()"> <!--open menu-->
+          <ion-icon name="menu"></ion-icon>
+        </button>
+    </ion-buttons>
     <ion-title>
       Manager | Home
     </ion-title>
     <ion-buttons end>
       <button ion-button (click)="logout()">
         <ion-icon name="log-out"></ion-icon>
-      </button>
-      <button ion-button  (click)="createBallot()">
-        <ion-icon name="ios-pulse"></ion-icon>
       </button>
       </ion-buttons>
   </ion-navbar>

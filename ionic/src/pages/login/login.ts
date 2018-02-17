@@ -35,7 +35,7 @@ export class LoginPage {
         if(allowed.type=="1"){      
           this.nav.setRoot('EmployeeHomePage');
         }else if(allowed.type=="2"){
-          this.nav.setRoot('ManagerHomePage');
+          this.nav.setRoot('MenubarPage');//manager will have a menubar
         }
       }else {
         this.showError("Access Denied");
