@@ -10,17 +10,27 @@ import { AuthServiceProvider} from '../../providers/auth-service/auth-service';
 })
 export class EditProfilePage {
   username:string;
-  user:{username:'',firstname:'',lastname:'',email:''};
-  constructor(public navCtrl: NavController, public navParams: NavParams,private auth:AuthServiceProvider) {
+  userDetails={username:'',firstname:'',lastname:'',email:''};
+  passwordDetails={currentPassword:'',newPassword:'',confirmPassword:''};
+
+  constructor(public nav: NavController, public navParams: NavParams,private auth:AuthServiceProvider) {
     this.username=this.auth.getUser();
     this.auth.getUserDetails(this.username).subscribe(user => {
-      console.log(user);
-      this.user=user;
-      console.log(this.user);
+      this.userDetails.username=user.username;
+      this.userDetails.firstname=user.firstname;
+      this.userDetails.lastname=user.lastname;
+      this.userDetails.email=user.email;
      },
      error => {
        console.log(error);
      });
   }
-}
 
+  //user logout
+  logout(){
+    this.auth.logout().subscribe(succ => {
+      this.nav.setRoot('LoginPage')
+    });
+  }
+}
+ 

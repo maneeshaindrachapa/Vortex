@@ -13,35 +13,61 @@
 
 
 <ion-content class="ion-content">
-  <form (ngSubmit)="register()" #registerForm="ngForm">
+  <form (ngSubmit)="editProfile()" #editForm="ngForm">
     <ion-row>
       <ion-col>
         <ion-list class="edits-list">
           
           <ion-item class="editdetails-list">
             <ion-label floating>First Name</ion-label>
-            <ion-input type="text"  name="firstname" [(ngModel)]="user.firstname" required></ion-input>
+            <ion-input type="text"  name="firstname" [(ngModel)]="userDetails.firstname" required></ion-input>
           </ion-item>
 
           <ion-item class="editdetails-list">
             <ion-label floating>Last Name</ion-label>
-            <ion-input type="text"  name="lastname" [(ngModel)]="user.lastname" required></ion-input>
+            <ion-input type="text"  name="lastname" [(ngModel)]="userDetails.lastname" required></ion-input>
           </ion-item>
 
           <ion-item class="editdetails-list">
             <ion-label floating>E-mail</ion-label>
-            <ion-input type="text" name="email" [(ngModel)]="user.email"  required></ion-input>
+            <ion-input type="email" name="email" [(ngModel)]="userDetails.email"  required></ion-input>
           </ion-item>
-
         </ion-list>
       </ion-col>
     </ion-row>
-    
     <ion-row>
       <ion-col class="edit-col">
-        <button ion-button class="submit-btn" full type="submit" [disabled]="!registerForm.form.valid">Edit Profile Details</button>
+        <button ion-button class="submit-btn" full type="submit" [disabled]="!editForm.form.valid">Edit Profile Details</button>
       </ion-col>
     </ion-row>
-    
+  </form>
+
+  <form (ngSubmit)="changePassword()" #passwordForm="ngForm">
+    <ion-row>
+      <ion-col>
+        <ion-list class="edits-list">
+          
+          <ion-item class="editdetails-list">
+            <ion-label floating>Current Password</ion-label>
+            <ion-input type="password"  name="currentpassowrd" [(ngModel)]="passwordDetails.currentPassword" required></ion-input>
+          </ion-item>
+
+          <ion-item class="editdetails-list">
+            <ion-label floating>New Password</ion-label>
+            <ion-input type="password"  name="newPassword" [(ngModel)]="passwordDetails.newPassword" required></ion-input>
+          </ion-item>
+
+          <ion-item class="editdetails-list">
+            <ion-label floating>Confirm New Password</ion-label>
+            <ion-input type="password" name="confirmPassword" [(ngModel)]="passwordDetails.confirmPassword"  required></ion-input>
+          </ion-item>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col class="edit-col">
+        <button ion-button class="submit-btn" full type="submit" [disabled]="!passwordForm.form.valid">Change Password</button>
+      </ion-col>
+    </ion-row>
   </form>
 </ion-content>

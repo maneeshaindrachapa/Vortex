@@ -10,6 +10,7 @@ import { HomePage } from '../pages/home/home';
 import { AuthServiceProvider } from '../providers/auth-service/auth-service';
 import { BallotServiceProvider } from '../providers/ballot-service/ballot-service';
 import { ForgetPasswordProvider } from '../providers/forget-password/forget-password';
+import { EmployeeAddBallotProvider } from '../providers/employee-add-ballot/employee-add-ballot';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { ForgetPasswordProvider } from '../providers/forget-password/forget-pass
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     AuthServiceProvider,
     BallotServiceProvider,
-    ForgetPasswordProvider
+    ForgetPasswordProvider,
+    EmployeeAddBallotProvider
   ]
 })
 export class AppModule {}
