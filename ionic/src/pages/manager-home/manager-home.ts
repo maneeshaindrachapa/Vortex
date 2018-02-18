@@ -59,7 +59,7 @@ export class ManagerHomePage {
   //refresh Page
   doRefresh(refresher) {
     console.log('Begin async operation', refresher);
-    this.items=[];
+    this.items=[]; //making all the items null then runst the async operation to get new items
     this.initializeItems();
 
     setTimeout(() => {

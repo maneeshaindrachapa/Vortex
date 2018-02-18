@@ -1,3 +1,13 @@
 page-menubar {
-
+    ion-icon{
+        padding-right:5%;
+        color: #FFF;
+    }
+    
+    .content-color{
+        background-color: rgba(74,153,184,1);
+        background:  filter-gradient(#4a99b8, #bce0ee, horizontal);
+        background:  background-image(linear-gradient(to left, rgba(74,153,184,1) 0%, rgba(41,184,229,1) 50%, rgba(188,224,238,1) 100%));
+        color:#fff;
+    }
 }

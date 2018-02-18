@@ -1,16 +1,16 @@
-<ion-menu [content]="content">
+<ion-menu [content]="content" swipeEnabled=false>
   <ion-header>
     <ion-toolbar>
-      <ion-title>Menu</ion-title>
+      <ion-title class="title-color">Vortex</ion-title>
     </ion-toolbar>
   </ion-header>
  
-  <ion-content>
+  <ion-content class="content-color">
     <ion-list>
-      <button ion-item (click)="openPage('CreateVotingBallotPage')">
+      <button ion-item (click)="openPage('CreateVotingBallotPage')" class="content-color">
         <ion-icon name="pulse"></ion-icon>Create Voting Ballot
       </button>
-      <button ion-item (click)="openPage('EditProfilePage')">
+      <button ion-item (click)="openPage('EditProfilePage')" class="content-color">
           <ion-icon name="contact"></ion-icon>Edit Profile
       </button>
     </ion-list>
