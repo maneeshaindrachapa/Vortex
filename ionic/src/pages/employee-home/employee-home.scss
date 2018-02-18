@@ -1,4 +1,10 @@
 page-employee-home {
+    background-image:url("../../assets/imgs/blurrybackground.jpg");
+    background-repeat: none;
+    background-size: cover;
+    .ion-item{
+        background-color: rgba(0,0,0,0);
+    }
     .ion-card-title{
         font-size: 1.2em;
         text-align: left;

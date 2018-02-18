@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams,AlertController, LoadingController, Loading } from 'ionic-angular';
 import { AuthServiceProvider} from '../../providers/auth-service/auth-service';
 import {BallotServiceProvider} from '../../providers/ballot-service/ballot-service';
 
@@ -15,8 +15,8 @@ export class CreateVotingBallotPage {
   noOfOptions:number;
   ballotOptions=[];
   ballotOptionsContainer={};
-
-  constructor(public nav: NavController, public navParams: NavParams, private auth:AuthServiceProvider,private ballot:BallotServiceProvider) {
+  loading: Loading;
+  constructor(public nav: NavController, public navParams: NavParams, private auth:AuthServiceProvider,private ballot:BallotServiceProvider,private alertCtrl:AlertController, private loadingCtrl: LoadingController) {
     this.username=this.auth.getUser(); //getting username from auth service provider
     ballot.setUser(this.username); //set username in ballot service provider
   }
@@ -30,13 +30,43 @@ export class CreateVotingBallotPage {
   }
 
   createBallot(){
+    this.showLoading();
     this.ballot.createVotingBallot(this.ballotDetails,this.noOfOptions,this.ballotOptionsContainer).subscribe(ballots => {
-      
+      this.showSuccess("Voting Ballot Created Successfully");
+      this.nav.pop();
      },
      error => {
+      this.showError("There is an Error in Details Entered");
        console.log(error);
      });
   }
   
+  showLoading() {
+    this.loading = this.loadingCtrl.create({
+      content: 'Please wait...',
+      dismissOnPageChange: true
+    });
+    this.loading.present();
+  }
+ 
+  showError(text) {
+    this.loading.dismiss();
+    let alert = this.alertCtrl.create({
+      title: 'Failed',
+      subTitle: text,
+      buttons: ['OK']
+    });
+    alert.present();
+  }
+
+  showSuccess(text) {
+    this.loading.dismiss();
+    let alert = this.alertCtrl.create({
+      title: 'Success',
+      subTitle: text,
+      buttons: ['OK']
+    });
+    alert.present();
+  }
 
 }
