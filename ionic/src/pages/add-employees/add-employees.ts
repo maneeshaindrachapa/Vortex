@@ -8,9 +8,10 @@ import { EmployeeAddBallotProvider } from '../../providers/employee-add-ballot/e
   templateUrl: 'add-employees.html',
 })
 export class AddEmployeesPage {
-  items:user[]
-  users:user[]
+  items:user[]=[];
+  users:user[]=[];
   constructor(public navCtrl: NavController, public navParams: NavParams,private empAddBallot:EmployeeAddBallotProvider) {
+    this.initializeItems();
   }
 
   //initialize items

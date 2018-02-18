@@ -1,3 +1,13 @@
 page-add-employees {
-
+    .ion-content{
+        background-image:url("../../assets/imgs/blurrybackground.jpg");
+        background-repeat: none;
+        background-size: cover;
+    }
+    .ion-item{
+        background-color: rgba(0,0,0,0);
+    }
+    .ion-label{
+        color: #fff;
+    }
 }

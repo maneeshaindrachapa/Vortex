@@ -8,6 +8,7 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class EmployeeAddBallotProvider {
   ballotID:number;
+  organizationID:number;
   constructor(public http:Http) {
   }
 
@@ -19,8 +20,13 @@ export class EmployeeAddBallotProvider {
   public getballotID(){
     return this.ballotID;
   }
-
+  //set organizationID
+  public setOrganizationID(organizationID){
+    this.organizationID=organizationID;
+    console.log(organizationID);
+  }
+  //getUsers
   getUsers(){
-    return this.http.post("http://localhost/VortexApp/api/getUserDetails.php",{"votingBallotID":this.ballotID}).map(res=>res.json());
+    return this.http.post("http://localhost/VortexApp/api/AddUsersToVotingBallot/getUsers.php",{"organizationID":this.organizationID}).map(res=>res.json());
   }
 }

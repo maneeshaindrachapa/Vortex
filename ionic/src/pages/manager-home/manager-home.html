@@ -17,11 +17,11 @@
 </ion-header>
 
 <!--managers cannot vote so managers can see all the votingPolls on going in thier organization-->
-<ion-content>
+<ion-content class="ion-content">
   <ion-searchbar (ionInput)="getVotingBallotDetails($event)"></ion-searchbar>
 
 <!-- added a refresher to refresh page-->
-  <ion-refresher (ionRefresh)="doRefresh($event)">
+  <ion-refresher (ionRefresh)="doRefresh($event)" class="ion-refresh">
       <ion-refresher-content
         pullingIcon="arrow-dropdown"
         pullingText="Pull to refresh"
@@ -50,7 +50,7 @@
           <ion-icon name="stats" class="ionicons"></ion-icon>&nbsp;<span class="ion-card-details">View Results</span>  
         </button>
         <button ion-button icon-left clear small class="adduser-button">
-          <ion-icon name="person-add" class="ionicons"></ion-icon>&nbsp;<span class="ion-card-details" (click)="addEmployee(item.votingballotID)">Add Employees</span>
+          <ion-icon name="person-add" class="ionicons"></ion-icon>&nbsp;<span class="ion-card-details" (click)="addEmployee(item.votingballotID,item.organizationID)">Add Employees</span>
         </button>
       </ion-card-content>
     </ion-card>

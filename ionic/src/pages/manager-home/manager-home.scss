@@ -1,4 +1,9 @@
 page-manager-home {
+    .ion-content{
+        background-image:url("../../assets/imgs/blurrybackground.jpg");
+        background-repeat: none;
+        background-size: cover;
+    }
     .ion-card-title{
         font-size: 1.2em;
         text-align: left;
@@ -25,5 +30,8 @@ page-manager-home {
     }
     .ionicons{
         color:rgba(74,153,184,1);
+    }
+    .ion-refresh{
+        color:#fff;
     }
 }

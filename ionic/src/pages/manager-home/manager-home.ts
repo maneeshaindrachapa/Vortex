@@ -78,8 +78,9 @@ export class ManagerHomePage {
     this.menuCtrl.open();
   }
   //when add employee button click
-  addEmployee(votingballotID){
+  addEmployee(votingballotID,organizationID){
     this.EmpAddBallot.setballotID(votingballotID);
+    this.EmpAddBallot.setOrganizationID(organizationID);
     console.log(votingballotID);
     this.nav.push("AddEmployeesPage");
   }
@@ -89,6 +90,7 @@ interface VotingBallots{
   votingballotID:number,
   votingballotName:string,
   votingballotDescription:string,
+  organizationID:string;
   startDate:Date,
   startTime:DateTime,
   endDate:Date,

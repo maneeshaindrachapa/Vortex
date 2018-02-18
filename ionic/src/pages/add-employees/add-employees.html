@@ -6,6 +6,11 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content>
+<ion-content class="ion-content">
   <ion-searchbar (ionInput)="getUserDetails($event)"></ion-searchbar>
+
+  <ion-item *ngFor="let item of items" class="ion-item">
+    <ion-label class="ion-label">{{item.firstname}} &nbsp; {{item.lastname}}</ion-label>
+    <ion-checkbox color="dark" checked="true"></ion-checkbox>
+  </ion-item>
 </ion-content>
