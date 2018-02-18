@@ -41,13 +41,16 @@
         <p class="ion-card-paragraph"style="white-space:pre-line;">
           {{item.votingballotDescription}}
         </p><br>
-        <ion-icon name="timer"></ion-icon>&nbsp;
+        <strong>Starting Time:</strong>&nbsp;
         <span class="ion-card-details" >{{item.startDate}} | {{item.startTime}}</span><br>
-        <ion-icon name="stopwatch"></ion-icon>&nbsp;
+        <strong>Ending Time&nbsp;&nbsp;:</strong>&nbsp;
         <span class="ion-card-details">{{item.endDate}} | {{item.endTime}}</span><br>
 
-        <button ion-button icon-left clear small >
+        <button ion-button icon-left clear small class="result-button">
           <ion-icon name="stats" class="ionicons"></ion-icon>&nbsp;<span class="ion-card-details">View Results</span>  
+        </button>
+        <button ion-button icon-left clear small class="adduser-button">
+          <ion-icon name="person-add" class="ionicons"></ion-icon>&nbsp;<span class="ion-card-details">Add Employees</span>
         </button>
       </ion-card-content>
     </ion-card>

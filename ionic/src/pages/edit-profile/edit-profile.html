@@ -12,6 +12,36 @@
 </ion-header>
 
 
-<ion-content padding>
+<ion-content class="ion-content">
+  <form (ngSubmit)="register()" #registerForm="ngForm">
+    <ion-row>
+      <ion-col>
+        <ion-list class="edits-list">
+          
+          <ion-item class="editdetails-list">
+            <ion-label floating>First Name</ion-label>
+            <ion-input type="text"  name="firstname" required></ion-input>
+          </ion-item>
 
+          <ion-item class="editdetails-list">
+            <ion-label floating>Last Name</ion-label>
+            <ion-input type="text"  name="lastname" required></ion-input>
+          </ion-item>
+
+          <ion-item class="editdetails-list">
+            <ion-label floating>E-mail</ion-label>
+            <ion-input type="text" name="email"  required></ion-input>
+          </ion-item>
+
+        </ion-list>
+      </ion-col>
+    </ion-row>
+    
+    <ion-row>
+      <ion-col class="edit-col">
+        <button ion-button class="submit-btn" full type="submit" [disabled]="!registerForm.form.valid">Edit Profile Details</button>
+      </ion-col>
+    </ion-row>
+    
+  </form>
 </ion-content>

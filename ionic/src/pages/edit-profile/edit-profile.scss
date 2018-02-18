@@ -1,3 +1,30 @@
 page-edit-profile {
-
+    .ion-content{
+        background-image:url("../../assets/imgs/blurrybackground.jpg");
+        background-repeat: none;
+        background-size: cover;
+    }
+    .editdetails-list{
+        border: transparent;
+        border-color: rgba(0, 0, 0, 0);
+        background-color: rgba(0, 0, 0, 0);
+        color: white;
+        font-size:1.0em; 
+    }
+    .ion-card{
+        border-color: rgba(0,0,0,0);
+    }
+    .edit-col{
+        margin: 0px 16px 0px 16px;
+        padding-bottom: 20px;
+    }
+    .submit-btn {
+        background:rgba(0,0,0,0);
+        border-radius: 30px !important;
+        border: 1px solid #fff;
+        color:#fff;
+    }
+    .edit-list{
+        margin-bottom: 0px;
+    }
 }
