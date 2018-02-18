@@ -1,20 +1,22 @@
 page-manager-home {
-    @import url('https://fonts.googleapis.com/css?family=Raleway');
     .ion-card-title{
-        font-family: 'Raleway', sans-serif;
         font-size: 1.2em;
-        text-align: center;
+        text-align: left;
         padding-bottom: 2%;
         margin-bottom: none;
     } 
     .ion-card-paragraph{
-        font-family: 'Raleway', sans-serif;
         font-size: 0.9em;
         text-align: left;
-        line-height: 0.9em;
+        line-height: 1.0em;
     }
     .ion-card-details{
-        font-family: 'Raleway', sans-serif;
         font-size: 1.0em;
+    }
+    .result-button{
+        margin-top:5%;
+        padding-left:0px;
+        float: left;
+        margin-bottom: 5%;
     }
 }
