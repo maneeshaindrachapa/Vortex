@@ -35,14 +35,12 @@ export class AddEmployeesPage {
   getUserDetails(ev: any) {
     // Reset items back to all of the items
     this.initializeSearch();
-
     // set val to the value of the searchbar
     let val = ev.target.value;
-
     // if the value is an empty string don't filter the items
     if (val && val.trim() != '') {
       this.items = this.items.filter((item) => {
-        if(item.firstname.toLowerCase().indexOf(val.toLowerCase()) > -1){
+        if(item.firstname.toLowerCase().indexOf(val.toLowerCase()) > -1 || item.lastname.toLowerCase().indexOf(val.toLowerCase()) > -1){
           console.log(this.items);
           return item;
         };
@@ -50,6 +48,8 @@ export class AddEmployeesPage {
     }
     return false;
   }
+
+
 }
 
 interface user{
