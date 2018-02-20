@@ -64,14 +64,17 @@ export class PasswordChangePage {
 
   changePassword(){
     this.showLoading("Waiting.....");
-    this.fp.changePassword(this.email,this.password).subscribe(password => {
-      this.showSuccess("Password Changed Succesfully");
-      this.nav.push("LoginPage");
-    },
-    error => {
-      this.showError('There is an Error');
-      
-    });
+    if(this.password.length>8){
+      this.fp.changePassword(this.email,this.password).subscribe(password => {
+        this.showSuccess("Password Changed Succesfully");
+        this.nav.push("LoginPage");
+      },
+      error => {
+        this.showError('There is an Error');
+      });
+    }else{
+      this.showError("Your Password Should have atleast 8 Characters");
+    }
   }
 
   showSuccess(text) {
