@@ -45,6 +45,36 @@ export class EditProfilePage {
      });
   }
 
+  changePassword(){
+    this.showLoading();
+    if(this.passwordDetails.currentPassword!='' && this.passwordDetails.newPassword!='' && this.passwordDetails.confirmPassword!=''){
+      if(this.passwordDetails.newPassword!=this.passwordDetails.confirmPassword){
+        this.showError("New Password doesnot match with Confirmation Password");
+      }else{
+        if(this.passwordDetails.newPassword.length<8){
+          this.showError("Password Must have at least 8 Characters");
+        }else{
+          this.auth.changePassword(this.username,this.passwordDetails).subscribe(password => {
+            if(password=="0"){
+              this.showError("Password Entered is Invalid");
+            }else if(password=="1"){
+              this.showSuccess("Password Change Successful");
+              this.passwordDetails.currentPassword='';
+              this.passwordDetails.newPassword='';
+              this.passwordDetails.confirmPassword='';
+            }
+           },
+           error => {
+             console.log(error);
+           });
+        }
+      }
+    }else{
+      this.showError("Please Fill the Fields");
+    }
+    console.log("ass");
+  }
+
   showLoading() {
     this.loading = this.loadingCtrl.create({
       content: 'Please wait...',

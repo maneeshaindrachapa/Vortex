@@ -68,4 +68,9 @@ export class AuthServiceProvider {
   public editProfile(username,userDetails){
     return this.http.post("http://localhost/VortexApp/api/editProfile.php",{"username":username,"userDetails":userDetails}).map(res=>res.json());
   }
+
+  //change password
+  public changePassword(username,passwordDetails){
+    return this.http.post("http://localhost/VortexApp/api/changePassword.php",{"username":username,"passwordDetails":passwordDetails}).map(res=>res.json());
+  }
 }
