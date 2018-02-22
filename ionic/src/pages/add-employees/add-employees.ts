@@ -10,6 +10,7 @@ import { EmployeeAddBallotProvider } from '../../providers/employee-add-ballot/e
 export class AddEmployeesPage {
   items:user[]=[];
   users:user[]=[];
+  tempUsers:user[]=[];
   constructor(public navCtrl: NavController, public navParams: NavParams,private empAddBallot:EmployeeAddBallotProvider) {
     this.initializeItems();
   }
@@ -18,8 +19,15 @@ export class AddEmployeesPage {
   initializeItems(){
     this.empAddBallot.getUsers().subscribe(users => {
       for(let i in users){
-        this.items.push(users[i]);
-        this.users.push(users[i]);
+        this.tempUsers.push(users[i]);
+        console.log(this.tempUsers);
+      }
+      for(let i in this.tempUsers){
+        if(this.tempUsers[i].votingballotID!=this.empAddBallot.getballotID()){
+          console.log(this.tempUsers[i].votingballotID);
+          this.items.push(users[i]);
+          this.users.push(users[i]);
+        }
       }
      },
      error => {
@@ -53,6 +61,7 @@ export class AddEmployeesPage {
 }
 
 interface user{
+  votingballotID:any,
   username:string,
   firstname:string,
   lastname:string,
