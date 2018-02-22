@@ -11,6 +11,7 @@ export class AddEmployeesPage {
   items:user[]=[];
   users:user[]=[];
   tempUsers:user[]=[];
+  alreadyAdded:user[]=[];
   constructor(public navCtrl: NavController, public navParams: NavParams,private empAddBallot:EmployeeAddBallotProvider) {
     this.initializeItems();
   }
@@ -27,6 +28,8 @@ export class AddEmployeesPage {
           console.log(this.tempUsers[i].votingballotID);
           this.items.push(users[i]);
           this.users.push(users[i]);
+        }else{
+          this.alreadyAdded.push(users[i]); //already added users declare
         }
       }
      },

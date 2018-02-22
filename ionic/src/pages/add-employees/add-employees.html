@@ -12,8 +12,16 @@
     <ion-item *ngFor="let item of items" class="ion-item">
       <ion-buttons start>
           <button ion-button icon-left clear small (click)="addUser(item.username)">
-            <ion-icon name="add-circle"></ion-icon>
+            <ion-icon name="checkmark"></ion-icon>
             <span class="span-class">{{item.firstname}} &nbsp; {{item.lastname}}</span>
+          </button>
+      </ion-buttons>
+    </ion-item>
+    <ion-item *ngFor="let user of alreadyAdded" class="ion-item">
+      <ion-buttons start>
+          <button ion-button icon-left clear small (click)="removeUser(user.username)">
+            <ion-icon name="close"></ion-icon>
+            <span class="span-class">{{user.firstname}} &nbsp; {{user.lastname}}</span>
           </button>
       </ion-buttons>
     </ion-item>
