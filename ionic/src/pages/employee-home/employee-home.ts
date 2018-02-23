@@ -14,11 +14,12 @@ export class EmployeeHomePage {
   ballots:VotingBallots[]=[];
   items:VotingBallots[]=[];
   constructor(public nav: NavController, public navParams: NavParams,private auth:AuthServiceProvider) {
+    this.username=this.auth.getUser();
     this.initializeItems();
   }
  //initialize items
  initializeItems(){
-  this.auth.getVotingBallots().subscribe(ballots => {
+  this.auth.getEmployeeVotingBallots(this.username).subscribe(ballots => {
     for(let i in ballots){
       this.items.push(ballots[i]);
       this.ballots.push(ballots[i]);

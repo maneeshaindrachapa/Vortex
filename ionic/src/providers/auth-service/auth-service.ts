@@ -59,6 +59,11 @@ export class AuthServiceProvider {
     return this.http.get("http://localhost/VortexApp/api/getVotingBallots.php").map(res=>res.json());
   }
 
+  //get voting ballots for employee
+  public getEmployeeVotingBallots(username){
+    return this.http.post("http://localhost/VortexApp/api/getEmployeeVotingBallots.php",{"username":username}).map(res=>res.json());
+  }
+
   //get userdetails
   public getUserDetails(username){
     return this.http.post("http://localhost/VortexApp/api/getUserDetails.php",{"username":username}).map(res=>res.json());
