@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams,AlertController, LoadingController, Loading } from 'ionic-angular';
 import { EmployeeAddBallotProvider } from '../../providers/employee-add-ballot/employee-add-ballot';
 
 @IonicPage()
@@ -8,28 +8,48 @@ import { EmployeeAddBallotProvider } from '../../providers/employee-add-ballot/e
   templateUrl: 'add-employees.html',
 })
 export class AddEmployeesPage {
+  ballotID:number;
+  loading: Loading;
   items:user[]=[];
   users:user[]=[];
-  tempUsers:user[]=[];
-  alreadyAdded:user[]=[];
-  constructor(public navCtrl: NavController, public navParams: NavParams,private empAddBallot:EmployeeAddBallotProvider) {
+  addedVoters:user[]=[];
+  constructor(public navCtrl: NavController, public navParams: NavParams,private empAddBallot:EmployeeAddBallotProvider, private alertCtrl:AlertController, private loadingCtrl: LoadingController) {
     this.initializeItems();
+    this.ballotID=this.empAddBallot.getballotID();
+  }
+  //get the voters
+  public voters(){
+    this.empAddBallot.getVoters().subscribe(voters => {
+      for(let i in voters){
+        this.addedVoters.push(voters[i]);
+      }
+     },
+     error => {
+       console.log(error);
+     });
   }
 
   //initialize items
   initializeItems(){
+    this.addedVoters=[];
+    setTimeout(1);
+    this.voters();
     this.empAddBallot.getUsers().subscribe(users => {
       for(let i in users){
-        this.tempUsers.push(users[i]);
-        console.log(this.tempUsers);
-      }
-      for(let i in this.tempUsers){
-        if(this.tempUsers[i].votingballotID!=this.empAddBallot.getballotID()){
-          console.log(this.tempUsers[i].votingballotID);
+        var counter=0;
+        for(let j in this.addedVoters){
+          counter++;
+          if(users[i].username==this.addedVoters[j].username){
+              break;
+          }else if(counter==this.addedVoters.length){
+            this.items.push(users[i]);
+            this.users.push(users[i]);
+            counter=0;
+          }
+        }
+        if(this.addedVoters.length==0){
           this.items.push(users[i]);
           this.users.push(users[i]);
-        }else{
-          this.alreadyAdded.push(users[i]); //already added users declare
         }
       }
      },
@@ -52,7 +72,6 @@ export class AddEmployeesPage {
     if (val && val.trim() != '') {
       this.items = this.items.filter((item) => {
         if(item.firstname.toLowerCase().indexOf(val.toLowerCase()) > -1 || item.lastname.toLowerCase().indexOf(val.toLowerCase()) > -1){
-          console.log(this.items);
           return item;
         };
       });
@@ -60,6 +79,41 @@ export class AddEmployeesPage {
     return false;
   }
 
+  //add user to the voting ballot
+  public addUser(username){
+    this.showLoading();
+    this.empAddBallot.addUserToBallot(username,this.ballotID).subscribe(user => {
+      if(user=="0"){
+        this.showText("User added to voting ballot successfully.");
+      }else if(user=="1"){
+        this.showText("User Already added to the Voting Ballot");
+      }
+      this.items=[];
+      this.users=[];
+      this.initializeItems();
+     },
+     error => {
+       console.log(error);
+     });
+  }
+  //loading 
+  showLoading() {
+    this.loading = this.loadingCtrl.create({
+      content: 'Please wait...',
+      dismissOnPageChange: true
+    });
+    this.loading.present();
+  }
+  //alert
+  showText(text) {
+    this.loading.dismiss();
+    let alert = this.alertCtrl.create({
+      title: 'Success',
+      subTitle: text,
+      buttons: ['OK']
+    });
+    alert.present();
+  }
 
 }
 

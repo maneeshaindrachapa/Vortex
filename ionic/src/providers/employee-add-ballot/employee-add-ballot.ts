@@ -27,6 +27,16 @@ export class EmployeeAddBallotProvider {
   }
   //getUsers
   getUsers(){
-    return this.http.post("http://localhost/VortexApp/api/AddUsersToVotingBallot/getUsers.php",{"organizationID":this.organizationID}).map(res=>res.json());
+    return this.http.post("http://localhost/VortexApp/api/AddUsersToVotingBallot/getUsers.php",{"organizationID":this.organizationID,"ballotID":this.ballotID}).map(res=>res.json());
+  }
+
+  //add user to ballot
+  public addUserToBallot(username,ballotID){
+    return this.http.post("http://localhost/VortexApp/api/AddUsersToVotingBallot/addUsers.php",{"username":username,"ballotID":ballotID}).map(res=>res.json());
+  }
+
+  //get voters that already added
+  public getVoters(){
+    return this.http.post("http://localhost/VortexApp/api/AddUsersToVotingBallot/getVoters.php",{"organizationID":this.organizationID,"ballotID":this.ballotID}).map(res=>res.json());
   }
 }

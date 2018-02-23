@@ -17,7 +17,7 @@
           </button>
       </ion-buttons>
     </ion-item>
-    <ion-item *ngFor="let user of alreadyAdded" class="ion-item">
+    <ion-item *ngFor="let user of addedVoters" class="ion-item">
       <ion-buttons start>
           <button ion-button icon-left clear small (click)="removeUser(user.username)">
             <ion-icon name="close"></ion-icon>
