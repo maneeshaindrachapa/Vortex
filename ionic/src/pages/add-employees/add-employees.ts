@@ -96,6 +96,20 @@ export class AddEmployeesPage {
        console.log(error);
      });
   }
+  //remove user from voting ballot
+  public removeUser(username){
+    this.showLoading();
+    this.empAddBallot.removeUserFromBallot(username,this.ballotID).subscribe(user => {
+      this.showText("User Removed successfully.");
+      this.items=[];
+      this.users=[];
+      this.initializeItems();
+     },
+     error => {
+       console.log(error);
+     });
+  }
+
   //loading 
   showLoading() {
     this.loading = this.loadingCtrl.create({
