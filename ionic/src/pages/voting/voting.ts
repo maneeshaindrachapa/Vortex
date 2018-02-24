@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, AlertController, LoadingController, Loading } from 'ionic-angular';
 import { BallotServiceProvider} from '../../providers/ballot-service/ballot-service';
 
 @IonicPage()
@@ -11,7 +11,8 @@ export class VotingPage {
   vote:Number=-1;
   votingBallotID:Number;
   votingOptions:votingOption[]=[];
-  constructor(public nav: NavController, public navParams: NavParams,private ballotSer:BallotServiceProvider) {
+  loading: Loading;
+  constructor(public nav: NavController,private ballotSer:BallotServiceProvider,private alertCtrl:AlertController, private loadingCtrl: LoadingController) {
     this.votingBallotID=this.ballotSer.getvotingballotid();
     this.getVotingOptions();
   }
@@ -31,13 +32,47 @@ export class VotingPage {
 
   //vote record
   makeVote(){
+    this.showLoading();
     if(this.vote==-1){
-      
+      this.showError("Please Select a Option to Vote");
     }else{
       console.log(this.vote);
+      this.ballotSer.employeeAddVote(this.vote).subscribe(success => {
+        this.showSuccess("Your Vote Added, Thank You !");
+      },
+        error => {
+          this.showError("Error");
+        });
     }
   }
 
+  showLoading() {
+    this.loading = this.loadingCtrl.create({
+      content: 'Please wait...',
+      dismissOnPageChange: true
+    });
+    this.loading.present();
+  }
+ 
+  //show toast
+  showError(text) {
+    this.loading.dismiss();
+    let alert = this.alertCtrl.create({
+      title: 'Failed',
+      subTitle: text,
+      buttons: ['OK']
+    });
+    alert.present();
+  }
+  showSuccess(text) {
+    this.loading.dismiss();
+    let alert = this.alertCtrl.create({
+      title: 'Successful',
+      subTitle: text,
+      buttons: ['OK']
+    });
+    alert.present();
+  }
 }
 
 interface votingOption{

@@ -34,6 +34,10 @@ export class BallotServiceProvider {
     return this.http.post("http://localhost/VortexApp/api/EmployeeVotings/getVotingOptions.php",{"votingballotID":votingBallotID}).map(res=>res.json());
   }
 
+  //add voting
+  public employeeAddVote(vote){
+    return this.http.post("http://localhost/VortexApp/api/EmployeeVotings/AddEmployeeVote.php",{"votingballotID":this.votingBallotID,"username":this.username,"votingoptionID":vote}).map(res=>res.json());
+  }
   //make a voting ballot
   public createVotingBallot(ballotDetails,noOfOptions,ballotOptionsContainer){
     return this.http.post("http://localhost/VortexApp/api/createBallot.php",{
