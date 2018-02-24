@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-navbar color="dark">
+    <ion-title>
+      Vote
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content class='ion-content'>
+  <ion-list radio-group [(ngModel)]="vote">
+
+    <ion-list-header>
+      Voting Options
+    </ion-list-header>
+  
+    <ion-item *ngFor="let option of votingOptions" class="ion-item">
+      <ion-label>{{option.votingoptionName}}</ion-label>
+      <ion-radio value={{option.votingoptionID}}></ion-radio>
+    </ion-item>
+  </ion-list>
+  <ion-row>
+    <ion-col class="vote-col">
+      <button ion-button class="vote-btn" full type="button" (click)="makeVote()">Vote</button>
+    </ion-col>
+  </ion-row>
+</ion-content>

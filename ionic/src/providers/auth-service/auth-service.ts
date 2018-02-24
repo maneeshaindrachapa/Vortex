@@ -61,7 +61,7 @@ export class AuthServiceProvider {
 
   //get voting ballots for employee
   public getEmployeeVotingBallots(username){
-    return this.http.post("http://localhost/VortexApp/api/getEmployeeVotingBallots.php",{"username":username}).map(res=>res.json());
+    return this.http.post("http://localhost/VortexApp/api/EmployeeVotings/getEmployeeVotingBallots.php",{"username":username}).map(res=>res.json());
   }
 
   //get userdetails

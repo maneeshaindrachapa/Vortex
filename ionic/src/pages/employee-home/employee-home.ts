@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { AuthServiceProvider} from '../../providers/auth-service/auth-service';
+import { BallotServiceProvider} from '../../providers/ballot-service/ballot-service';
 import { DateTime } from 'ionic-angular/components/datetime/datetime';
 
 @IonicPage()
@@ -13,8 +14,9 @@ export class EmployeeHomePage {
 
   ballots:VotingBallots[]=[];
   items:VotingBallots[]=[];
-  constructor(public nav: NavController, public navParams: NavParams,private auth:AuthServiceProvider) {
+  constructor(public nav: NavController, public navParams: NavParams,private auth:AuthServiceProvider,private ballotSer:BallotServiceProvider) {
     this.username=this.auth.getUser();
+    this.ballotSer.setUser(this.username);
     this.initializeItems();
   }
  //initialize items
@@ -54,21 +56,18 @@ getVotingBallotDetails(ev: any) {
   return false;
 }
 
-  //creating voting ballot
-  public createBallot(){
-    this.nav.push('CreateVotingBallotPage');
-  }
-  public editProfile(){
-    this.nav.push("EditProfilePage");
-  }
-  //user logout
-  logout(){
-    this.auth.logout().subscribe(succ => {
-      this.nav.setRoot('LoginPage')
-    });
-  }
+//user logout
+logout(){
+  this.auth.logout().subscribe(succ => {
+    this.nav.setRoot('LoginPage')
+  });
+}
 
-  
+  //vote in voting ballot
+  vote(votingballotid){
+    this.ballotSer.setvotingballotid(votingballotid);
+    this.nav.push("VotingPage");
+  }
 }
 
 interface VotingBallots{
