@@ -27,10 +27,11 @@ export class EmployeeHomePage {
       let tempEndDate=new Date(ballots[i].endDate+'T'+ballots[i].endTime);
       if(tempStartDate<this.currentDate && this.currentDate<tempEndDate){
         ballots[i].vote=true;
+        ballots[i].viewResults=false;
       }else{
         ballots[i].vote=false;
+        ballots[i].viewResults=true;
       }
-      console.log(tempStartDate);
       this.items.push(ballots[i]);
       this.ballots.push(ballots[i]);
     }
@@ -70,12 +71,14 @@ logout(){
     this.nav.setRoot('LoginPage')
   });
 }
-
-  //vote in voting ballot
-  vote(votingballotid){
-    this.ballotSer.setvotingballotid(votingballotid);
-    this.nav.push("VotingPage");
-  }
+editProfile(){
+  this.nav.push('EditProfilePage');
+}
+//vote in voting ballot
+vote(votingballotid){
+  this.ballotSer.setvotingballotid(votingballotid);
+  this.nav.push("VotingPage");
+}
 }
 
 interface VotingBallots{
@@ -87,5 +90,6 @@ interface VotingBallots{
   endDate:Date,
   endTime:DateTime,
   image:string,
-  vote:boolean
+  vote:boolean,
+  viewResults:boolean
 }
