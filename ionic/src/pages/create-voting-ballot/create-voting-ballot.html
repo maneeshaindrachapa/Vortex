@@ -20,7 +20,7 @@
           </ion-item>
 
           <ion-item>
-            <ion-datetime type="datetime" placeholder="Starting Date" displayFormat="MM/DD/YYYY" name="startDate" [(ngModel)]="ballotDetails.startDate" required></ion-datetime>
+            <ion-datetime type="datetime" placeholder="Starting Date" displayFormat="MM/DD/YYYY" min='{{currentDate}}' name="startDate" [(ngModel)]="ballotDetails.startDate" required></ion-datetime>
           </ion-item>
 
           <ion-item>

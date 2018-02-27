@@ -10,6 +10,7 @@ import {BallotServiceProvider} from '../../providers/ballot-service/ballot-servi
 })
 export class CreateVotingBallotPage {
   username:string;
+  currentDate=new Date().toISOString();
   createSuccess = false;
   ballotDetails = { ballotName: '',ballotDescription:'', startDate:'', startTime:'', holdingHours:'', url: '' };
   noOfOptions:number;
@@ -20,6 +21,7 @@ export class CreateVotingBallotPage {
   constructor(public nav: NavController, public navParams: NavParams, private auth:AuthServiceProvider,private ballot:BallotServiceProvider,private alertCtrl:AlertController, private loadingCtrl: LoadingController) {
     this.username=this.auth.getUser(); //getting username from auth service provider
     ballot.setUser(this.username); //set username in ballot service provider
+    //console.log(this.currentDate.);
   }
 
   //adding options according to the noofoptions
