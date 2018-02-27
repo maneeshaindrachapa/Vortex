@@ -37,7 +37,7 @@
         <button ion-button icon-left clear small class="result-button">
           <ion-icon name="analytics"class="ionicons"></ion-icon>&nbsp;<span class="ion-card-details">View Results</span>  
         </button>
-        <button ion-button icon-left clear small class="vote-button" (click)="vote(item.votingballotID)">
+        <button ion-button icon-left clear small class="vote-button" (click)="vote(item.votingballotID)" *ngIf="item.vote">
           <ion-icon name="trending-up" class="ionicons"></ion-icon>&nbsp;<span class="ionc-card-details">Vote</span>
         </button>
       </ion-card-content>

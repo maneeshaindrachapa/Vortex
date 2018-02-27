@@ -11,7 +11,7 @@ import { DateTime } from 'ionic-angular/components/datetime/datetime';
 })
 export class EmployeeHomePage {
   username = '';
-
+  currentDate=new Date();
   ballots:VotingBallots[]=[];
   items:VotingBallots[]=[];
   constructor(public nav: NavController, public navParams: NavParams,private auth:AuthServiceProvider,private ballotSer:BallotServiceProvider) {
@@ -23,6 +23,14 @@ export class EmployeeHomePage {
  initializeItems(){
   this.auth.getEmployeeVotingBallots(this.username).subscribe(ballots => {
     for(let i in ballots){
+      let tempStartDate=new Date(ballots[i].startDate+'T'+ballots[i].startTime);//assiginng temporary data to compare dates
+      let tempEndDate=new Date(ballots[i].endDate+'T'+ballots[i].endTime);
+      if(tempStartDate<this.currentDate && this.currentDate<tempEndDate){
+        ballots[i].vote=true;
+      }else{
+        ballots[i].vote=false;
+      }
+      console.log(tempStartDate);
       this.items.push(ballots[i]);
       this.ballots.push(ballots[i]);
     }
@@ -78,5 +86,6 @@ interface VotingBallots{
   startTime:DateTime,
   endDate:Date,
   endTime:DateTime,
-  image:string
+  image:string,
+  vote:boolean
 }
