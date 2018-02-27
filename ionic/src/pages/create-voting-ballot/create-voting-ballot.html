@@ -10,49 +10,54 @@
     <ion-row>
       <ion-col>
         <ion-list inset>
-          
+
           <ion-item>
             <ion-input type="text" placeholder="Ballot Name" name="ballotName" [(ngModel)]="ballotDetails.ballotName" required></ion-input>
           </ion-item>
 
           <ion-item>
-            <ion-input type="text" placeholder="Ballot Description" name="ballotDescription" [(ngModel)]="ballotDetails.ballotDescription" required></ion-input>
+            <ion-input type="text" placeholder="Ballot Description" name="ballotDescription" [(ngModel)]="ballotDetails.ballotDescription"
+              required></ion-input>
           </ion-item>
 
           <ion-item>
-            <ion-datetime type="datetime" placeholder="Starting Date" displayFormat="MM/DD/YYYY" min='{{currentDate}}' name="startDate" [(ngModel)]="ballotDetails.startDate" required></ion-datetime>
+            <ion-datetime type="datetime" placeholder="Starting Date" displayFormat="MM/DD/YYYY" min='{{currentDate}}' name="startDate"
+              [(ngModel)]="ballotDetails.startDate" required></ion-datetime>
           </ion-item>
 
           <ion-item>
-            <ion-datetime type="datetime" placeholder="Starting Time" displayFormat="HH:mm:ss" name="startTime" [(ngModel)]="ballotDetails.startTime" required></ion-datetime>
+            <ion-datetime type="datetime" placeholder="Starting Time" displayFormat="HH:mm:ss" name="startTime" [(ngModel)]="ballotDetails.startTime"
+              required></ion-datetime>
           </ion-item>
 
           <ion-item>
-            <ion-input type="number" placeholder="Holding Hours" min="12" step="12" name="holdingHours" [(ngModel)]="ballotDetails.holdingHours" required></ion-input>
+            <ion-input type="number" placeholder="Holding Hours" min="12" step="12" name="holdingHours" [(ngModel)]="ballotDetails.holdingHours"
+              required></ion-input>
           </ion-item>
-          
+
           <ion-item>
             <ion-input type="text" placeholder="Featured Image URL" name="url" [(ngModel)]="ballotDetails.url" required></ion-input>
           </ion-item>
 
           <ion-item>
-            <ion-input type="number" min="0" max="5" step="1" placeholder="Number of Options" name="noOfOptions" [(ngModel)]="noOfOptions" (ngModelChange)="onChange($event)" required></ion-input>
+            <ion-input type="number" min="0" max="5" step="1" placeholder="Number of Options" name="noOfOptions" [(ngModel)]="noOfOptions"
+              (ngModelChange)="onChange($event)" required></ion-input>
           </ion-item>
 
-          <ion-item *ngFor="let option of ballotOptions;let i=index" >
-              <ion-input type="text" placeholder="Option {{i+1}}"  name="option{{i+1}}" [(ngModel)]="ballotOptionsContainer[i]" required></ion-input>
+          <ion-item *ngFor="let option of ballotOptions;let i=index">
+            <ion-input type="text" placeholder="Option {{i+1}}" name="option{{i+1}}" [(ngModel)]="ballotOptionsContainer[i]" required></ion-input>
           </ion-item>
 
         </ion-list>
       </ion-col>
     </ion-row>
-    
+
     <ion-row>
       <ion-col class="ballot-col">
         <button ion-button class="submit-btn" full type="submit" [disabled]="!ballotForm.form.valid">Create Ballot</button>
       </ion-col>
     </ion-row>
-    
+
   </form>
 
 

@@ -4,18 +4,18 @@
       <ion-title class="title-color">Vortex</ion-title>
     </ion-toolbar>
   </ion-header>
- 
+
   <ion-content class="content-color">
     <ion-list>
       <button ion-item (click)="openPage('CreateVotingBallotPage')" class="content-color">
         <ion-icon name="pulse"></ion-icon>Create Voting Ballot
       </button>
       <button ion-item (click)="openPage('EditProfilePage')" class="content-color">
-          <ion-icon name="contact"></ion-icon>Edit Profile
+        <ion-icon name="contact"></ion-icon>Edit Profile
       </button>
     </ion-list>
   </ion-content>
 </ion-menu>
- 
+
 <!-- main navigation -->
 <ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>

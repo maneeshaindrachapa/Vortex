@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController,LoadingController, Loading } from 'ionic-angular';
-import {ForgetPasswordProvider} from '../../providers/forget-password/forget-password';
+import { IonicPage, NavController, NavParams, AlertController, LoadingController, Loading } from 'ionic-angular';
+import { ForgetPasswordProvider } from '../../providers/forget-password/forget-password';
 
 @IonicPage()
 @Component({
@@ -8,23 +8,23 @@ import {ForgetPasswordProvider} from '../../providers/forget-password/forget-pas
   templateUrl: 'forgetpassword.html',
 })
 export class ForgetpasswordPage {
-  email="";
+  email = "";
   loading: Loading;
-  constructor(public nav: NavController,private fp:ForgetPasswordProvider,private alert:AlertController,private loadingCtrl: LoadingController) {
+  constructor(public nav: NavController, private fp: ForgetPasswordProvider, private alert: AlertController, private loadingCtrl: LoadingController) {
   }
 
-  sendEmail(){
+  sendEmail() {
     this.showLoading();
-    if(this.email!=""){
+    if (this.email != "") {
       this.fp.sendEmail(this.email).subscribe(mail => {
         this.fp.setEmail(this.email);
         this.nav.push("PasswordChangePage");
       },
-      error => {
-        this.showError('There is an Error Sending Mail');
-        console.log(error);
-      });
-    }else{
+        error => {
+          this.showError('There is an Error Sending Mail');
+          console.log(error);
+        });
+    } else {
       this.showError("Please Enter Your E-mail");
     }
   }

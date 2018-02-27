@@ -10,4 +10,4 @@ import { AddEmployeesPage } from './add-employees';
     IonicPageModule.forChild(AddEmployeesPage),
   ],
 })
-export class AddEmployeesPageModule {}
+export class AddEmployeesPageModule { }

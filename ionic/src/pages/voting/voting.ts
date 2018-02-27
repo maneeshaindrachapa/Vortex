@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, AlertController, LoadingController, Loading } from 'ionic-angular';
-import { BallotServiceProvider} from '../../providers/ballot-service/ballot-service';
+import { BallotServiceProvider } from '../../providers/ballot-service/ballot-service';
 
 @IonicPage()
 @Component({
@@ -8,34 +8,34 @@ import { BallotServiceProvider} from '../../providers/ballot-service/ballot-serv
   templateUrl: 'voting.html',
 })
 export class VotingPage {
-  vote:Number=-1;
-  votingBallotID:Number;
-  votingOptions:votingOption[]=[];
+  vote: Number = -1;
+  votingBallotID: Number;
+  votingOptions: votingOption[] = [];
   loading: Loading;
-  constructor(public nav: NavController,private ballotSer:BallotServiceProvider,private alertCtrl:AlertController, private loadingCtrl: LoadingController) {
-    this.votingBallotID=this.ballotSer.getvotingballotid();
+  constructor(public nav: NavController, private ballotSer: BallotServiceProvider, private alertCtrl: AlertController, private loadingCtrl: LoadingController) {
+    this.votingBallotID = this.ballotSer.getvotingballotid();
     this.getVotingOptions();
   }
 
   //get all voting options for a perticular voting ballot
-  getVotingOptions(){
+  getVotingOptions() {
     this.ballotSer.getvotingOptions(this.votingBallotID).subscribe(options => {
-      for(let i in options){
+      for (let i in options) {
         this.votingOptions.push(options[i]);
         console.log(this.votingOptions);
       }
-     },
-     error => {
-       console.log(error);
-     });
+    },
+      error => {
+        console.log(error);
+      });
   }
 
   //vote record
-  makeVote(){
+  makeVote() {
     this.showLoading();
-    if(this.vote==-1){
+    if (this.vote == -1) {
       this.showError("Please Select a Option to Vote");
-    }else{
+    } else {
       console.log(this.vote);
       this.ballotSer.employeeAddVote(this.vote).subscribe(success => {
         this.showSuccess("Your Vote Added, Thank You !");
@@ -53,7 +53,7 @@ export class VotingPage {
     });
     this.loading.present();
   }
- 
+
   //show toast
   showError(text) {
     this.loading.dismiss();
@@ -75,8 +75,8 @@ export class VotingPage {
   }
 }
 
-interface votingOption{
-  votingballotID:Number,
-  votingoptionID:Number,
-  votingoptionName:string
+interface votingOption {
+  votingballotID: Number,
+  votingoptionID: Number,
+  votingoptionName: string
 }

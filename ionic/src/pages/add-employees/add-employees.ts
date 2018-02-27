@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams,AlertController, LoadingController, Loading } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController, LoadingController, Loading } from 'ionic-angular';
 import { EmployeeAddBallotProvider } from '../../providers/employee-add-ballot/employee-add-ballot';
 
 @IonicPage()
@@ -8,58 +8,58 @@ import { EmployeeAddBallotProvider } from '../../providers/employee-add-ballot/e
   templateUrl: 'add-employees.html',
 })
 export class AddEmployeesPage {
-  ballotID:number;
+  ballotID: number;
   loading: Loading;
-  items:user[]=[];
-  users:user[]=[];
-  addedVoters:user[]=[];
-  constructor(public navCtrl: NavController, public navParams: NavParams,private empAddBallot:EmployeeAddBallotProvider, private alertCtrl:AlertController, private loadingCtrl: LoadingController) {
+  items: user[] = [];
+  users: user[] = [];
+  addedVoters: user[] = [];
+  constructor(public navCtrl: NavController, public navParams: NavParams, private empAddBallot: EmployeeAddBallotProvider, private alertCtrl: AlertController, private loadingCtrl: LoadingController) {
     this.initializeItems();
-    this.ballotID=this.empAddBallot.getballotID();
+    this.ballotID = this.empAddBallot.getballotID();
   }
   //get the voters
-  public voters(){
+  public voters() {
     this.empAddBallot.getVoters().subscribe(voters => {
-      for(let i in voters){
+      for (let i in voters) {
         this.addedVoters.push(voters[i]);
       }
-     },
-     error => {
-       console.log(error);
-     });
+    },
+      error => {
+        console.log(error);
+      });
   }
 
   //initialize items
-  initializeItems(){
-    this.addedVoters=[];
+  initializeItems() {
+    this.addedVoters = [];
     setTimeout(1);
     this.voters();
     this.empAddBallot.getUsers().subscribe(users => {
-      for(let i in users){
-        var counter=0;
-        for(let j in this.addedVoters){
+      for (let i in users) {
+        var counter = 0;
+        for (let j in this.addedVoters) {
           counter++;
-          if(users[i].username==this.addedVoters[j].username){
-              break;
-          }else if(counter==this.addedVoters.length){
+          if (users[i].username == this.addedVoters[j].username) {
+            break;
+          } else if (counter == this.addedVoters.length) {
             this.items.push(users[i]);
             this.users.push(users[i]);
-            counter=0;
+            counter = 0;
           }
         }
-        if(this.addedVoters.length==0){
+        if (this.addedVoters.length == 0) {
           this.items.push(users[i]);
           this.users.push(users[i]);
         }
       }
-     },
-     error => {
-       console.log(error);
-     });
+    },
+      error => {
+        console.log(error);
+      });
   }
 
-  initializeSearch(){
-    this.items=this.users;
+  initializeSearch() {
+    this.items = this.users;
   }
 
   //search bar function
@@ -71,7 +71,7 @@ export class AddEmployeesPage {
     // if the value is an empty string don't filter the items
     if (val && val.trim() != '') {
       this.items = this.items.filter((item) => {
-        if(item.firstname.toLowerCase().indexOf(val.toLowerCase()) > -1 || item.lastname.toLowerCase().indexOf(val.toLowerCase()) > -1){
+        if (item.firstname.toLowerCase().indexOf(val.toLowerCase()) > -1 || item.lastname.toLowerCase().indexOf(val.toLowerCase()) > -1) {
           return item;
         };
       });
@@ -80,34 +80,34 @@ export class AddEmployeesPage {
   }
 
   //add user to the voting ballot
-  public addUser(username){
+  public addUser(username) {
     this.showLoading();
-    this.empAddBallot.addUserToBallot(username,this.ballotID).subscribe(user => {
-      if(user=="0"){
+    this.empAddBallot.addUserToBallot(username, this.ballotID).subscribe(user => {
+      if (user == "0") {
         this.showText("User added to voting ballot successfully.");
-      }else if(user=="1"){
+      } else if (user == "1") {
         this.showText("User Already added to the Voting Ballot");
       }
-      this.items=[];
-      this.users=[];
+      this.items = [];
+      this.users = [];
       this.initializeItems();
-     },
-     error => {
-       console.log(error);
-     });
+    },
+      error => {
+        console.log(error);
+      });
   }
   //remove user from voting ballot
-  public removeUser(username){
+  public removeUser(username) {
     this.showLoading();
-    this.empAddBallot.removeUserFromBallot(username,this.ballotID).subscribe(user => {
+    this.empAddBallot.removeUserFromBallot(username, this.ballotID).subscribe(user => {
       this.showText("User Removed successfully.");
-      this.items=[];
-      this.users=[];
+      this.items = [];
+      this.users = [];
       this.initializeItems();
-     },
-     error => {
-       console.log(error);
-     });
+    },
+      error => {
+        console.log(error);
+      });
   }
 
   //loading 
@@ -131,10 +131,10 @@ export class AddEmployeesPage {
 
 }
 
-interface user{
-  votingballotID:any,
-  username:string,
-  firstname:string,
-  lastname:string,
-  organizationID:number
+interface user {
+  votingballotID: any,
+  username: string,
+  firstname: string,
+  lastname: string,
+  organizationID: number
 }

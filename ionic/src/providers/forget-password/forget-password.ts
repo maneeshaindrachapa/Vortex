@@ -2,38 +2,38 @@ import { Injectable } from '@angular/core';
 
 //adding http module and rxjs module
 import { Http, Response, Headers } from "@angular/http";
-import {Observable} from 'rxjs/Observable';
+import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 
 
 @Injectable()
 export class ForgetPasswordProvider {
-  email:string;
-  constructor(public http: Http) {    
+  email: string;
+  constructor(public http: Http) {
   }
   //set email
-  public setEmail(email){
-    this.email=email;
+  public setEmail(email) {
+    this.email = email;
   }
 
   //getEmail
-  public getEmail(){
+  public getEmail() {
     return this.email;
   }
 
   //forget password send email
-  public sendEmail(email){
+  public sendEmail(email) {
     this.setEmail(email);
-    return this.http.post("http://localhost/VortexApp/api/forgetpassword/forgetPassword.php",{"email":email}).map(res=>res.json());
+    return this.http.post("http://localhost/VortexApp/api/forgetpassword/forgetPassword.php", { "email": email }).map(res => res.json());
   }
 
   //check code is correct
-  public checkCode(email,code){
-    return this.http.post("http://localhost/VortexApp/api/forgetpassword/checkCode.php",{"email":email,"code":code}).map(res=>res.json());
+  public checkCode(email, code) {
+    return this.http.post("http://localhost/VortexApp/api/forgetpassword/checkCode.php", { "email": email, "code": code }).map(res => res.json());
   }
 
   //change password
-  public changePassword(email,password){
-    return this.http.post("http://localhost/VortexApp/api/forgetpassword/changePassword.php",{"email":email,"password":password}).map(res=>res.json());
+  public changePassword(email, password) {
+    return this.http.post("http://localhost/VortexApp/api/forgetpassword/changePassword.php", { "email": email, "password": password }).map(res => res.json());
   }
 }

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import {ManagerHomePage} from "./../manager-home/manager-home";
+import { ManagerHomePage } from "./../manager-home/manager-home";
 
 export interface PageInterface {
   title: string;
@@ -17,15 +17,15 @@ export interface PageInterface {
 })
 export class MenubarPage {
   rootPage = 'ManagerHomePage';
-  
+
   constructor(public nav: NavController, public navParams: NavParams) {
   }
-  
+
   //open pages
-  openPage(pagename){
+  openPage(pagename) {
     this.nav.push(pagename);
   }
 
-  
+
 
 }

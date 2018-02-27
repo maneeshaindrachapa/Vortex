@@ -7,7 +7,7 @@
       <button ion-button (click)="logout()">
         <ion-icon name="log-out"></ion-icon>
       </button>
-      </ion-buttons>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
 
@@ -16,20 +16,20 @@
     <ion-row>
       <ion-col>
         <ion-list class="edits-list">
-          
+
           <ion-item class="editdetails-list">
             <ion-label floating>First Name</ion-label>
-            <ion-input type="text"  name="firstname" [(ngModel)]="userDetails.firstname" required></ion-input>
+            <ion-input type="text" name="firstname" [(ngModel)]="userDetails.firstname" required></ion-input>
           </ion-item>
 
           <ion-item class="editdetails-list">
             <ion-label floating>Last Name</ion-label>
-            <ion-input type="text"  name="lastname" [(ngModel)]="userDetails.lastname" required></ion-input>
+            <ion-input type="text" name="lastname" [(ngModel)]="userDetails.lastname" required></ion-input>
           </ion-item>
 
           <ion-item class="editdetails-list">
             <ion-label floating>E-mail</ion-label>
-            <ion-input type="email" name="email" [(ngModel)]="userDetails.email"  required></ion-input>
+            <ion-input type="email" name="email" [(ngModel)]="userDetails.email" required></ion-input>
           </ion-item>
         </ion-list>
       </ion-col>
@@ -45,20 +45,20 @@
     <ion-row>
       <ion-col>
         <ion-list class="edits-list">
-          
+
           <ion-item class="editdetails-list">
             <ion-label floating>Current Password</ion-label>
-            <ion-input type="password"  name="currentpassowrd" [(ngModel)]="passwordDetails.currentPassword" required></ion-input>
+            <ion-input type="password" name="currentpassowrd" [(ngModel)]="passwordDetails.currentPassword" required></ion-input>
           </ion-item>
 
           <ion-item class="editdetails-list">
             <ion-label floating>New Password</ion-label>
-            <ion-input type="password"  name="newPassword" [(ngModel)]="passwordDetails.newPassword" required></ion-input>
+            <ion-input type="password" name="newPassword" [(ngModel)]="passwordDetails.newPassword" required></ion-input>
           </ion-item>
 
           <ion-item class="editdetails-list">
             <ion-label floating>Confirm New Password</ion-label>
-            <ion-input type="password" name="confirmPassword" [(ngModel)]="passwordDetails.confirmPassword"  required></ion-input>
+            <ion-input type="password" name="confirmPassword" [(ngModel)]="passwordDetails.confirmPassword" required></ion-input>
           </ion-item>
         </ion-list>
       </ion-col>
