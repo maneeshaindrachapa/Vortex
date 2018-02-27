@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams,AlertController, LoadingController, Loading } from 'ionic-angular';
+import { IonicPage, NavController, NavParams,AlertController, LoadingController, Loading, DateTime } from 'ionic-angular';
 import { AuthServiceProvider} from '../../providers/auth-service/auth-service';
 import {BallotServiceProvider} from '../../providers/ballot-service/ballot-service';
 
@@ -11,11 +11,12 @@ import {BallotServiceProvider} from '../../providers/ballot-service/ballot-servi
 export class CreateVotingBallotPage {
   username:string;
   createSuccess = false;
-  ballotDetails = { ballotName: '',ballotDescription:'', startDate:'',startTime:'', endDate:'',endTime:'', url: '' };
+  ballotDetails = { ballotName: '',ballotDescription:'', startDate:'', startTime:'', holdingHours:'', url: '' };
   noOfOptions:number;
   ballotOptions=[];
   ballotOptionsContainer={};
   loading: Loading;
+  temp:number;
   constructor(public nav: NavController, public navParams: NavParams, private auth:AuthServiceProvider,private ballot:BallotServiceProvider,private alertCtrl:AlertController, private loadingCtrl: LoadingController) {
     this.username=this.auth.getUser(); //getting username from auth service provider
     ballot.setUser(this.username); //set username in ballot service provider

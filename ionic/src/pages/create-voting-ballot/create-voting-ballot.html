@@ -28,11 +28,7 @@
           </ion-item>
 
           <ion-item>
-            <ion-datetime type="datetime" placeholder="Ending Date" displayFormat="MM/DD/YYYY" name="endDate" [(ngModel)]="ballotDetails.endDate" required></ion-datetime>
-          </ion-item>
-
-          <ion-item>
-            <ion-datetime type="datetime" placeholder="Ending Time" displayFormat="HH:mm:ss" name="endTime" [(ngModel)]="ballotDetails.endTime" required></ion-datetime>
+            <ion-input type="number" placeholder="Holding Hours" min="12" step="12" name="holdingHours" [(ngModel)]="ballotDetails.holdingHours" required></ion-input>
           </ion-item>
           
           <ion-item>

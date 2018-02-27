@@ -8,7 +8,7 @@ import 'rxjs/add/operator/map';
 
 @Injectable()
 export class BallotServiceProvider {
-  username:string
+  username:string;
   votingBallotID:Number;
   constructor(public http: Http) {
   }
@@ -46,8 +46,7 @@ export class BallotServiceProvider {
       "ballotDescription":ballotDetails.ballotDescription,
       "startDate":ballotDetails.startDate,
       "startTime":ballotDetails.startTime,
-      "endDate":ballotDetails.endDate,
-      "endTime":ballotDetails.endTime,
+      "holdingHours":ballotDetails.holdingHours,
       "url":ballotDetails.url,
       "noOfOptions":noOfOptions,
       "ballotOptionsContainer":ballotOptionsContainer}).map(res=>res.json());

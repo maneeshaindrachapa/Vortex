@@ -10,13 +10,17 @@
         $ballotDescription=$data->ballotDescription;
         $startDate=$data->startDate;
         $startTime=$data->startTime;
-        $endDate=$data->endDate;
-        $endTime=$data->endTime;
+        $holdingHours=$data->holdingHours;
         $url=$data->url;
         $noOfOptions=$data->noOfOptions;
         $options=($data->ballotOptionsContainer);
 
-        
+        $temp=(int)$holdingHours;
+        $Time=new DateTime($startDate.$startTime);
+        $Time->add(new DateInterval('PT'.$temp.'H'));
+        $endDate=$Time->format('Y-m-d');   
+        $endTime=$Time->format('H:i:s');
+
         //mySql transation begin
         $query1="Start transaction";
         $data1=$crud->execute($query1);
