@@ -37,7 +37,7 @@
           <span class="ion-card-details">{{item.endDate}} | {{item.endTime}}</span>
           <br>
 
-          <button ion-button icon-left clear small class="result-button" *ngIf="item.viewResults">
+          <button ion-button icon-left clear small class="result-button" *ngIf="item.viewResults" (click)="viewResults(item.votingballotID)">
             <ion-icon name="analytics" class="ionicons"></ion-icon>&nbsp;
             <span class="ion-card-details">View Results</span>
           </button>

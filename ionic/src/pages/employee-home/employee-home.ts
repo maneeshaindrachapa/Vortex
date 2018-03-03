@@ -79,6 +79,11 @@ export class EmployeeHomePage {
     this.ballotSer.setvotingballotid(votingballotid);
     this.nav.push("VotingPage");
   }
+  //view Results
+  viewResults(votingballotid){
+    this.ballotSer.setvotingballotid(votingballotid);
+    this.nav.push("ResultsPage");
+  }
 }
 
 interface VotingBallots {

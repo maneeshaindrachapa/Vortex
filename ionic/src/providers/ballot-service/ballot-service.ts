@@ -33,6 +33,10 @@ export class BallotServiceProvider {
   public getvotingOptions(votingBallotID) {
     return this.http.post("http://localhost/VortexApp/api/EmployeeVotings/getVotingOptions.php", { "votingballotID": votingBallotID }).map(res => res.json());
   }
+  //get results
+  public getResults(votingBallotID,votingOptionIDs){
+    return this.http.post("http://localhost/VortexApp/api/EmployeeVotings/getResults.php", { "votingballotID": votingBallotID,"votingoptionIDs":votingOptionIDs }).map(res => res.json());
+  }
 
   //add voting
   public employeeAddVote(vote) {
