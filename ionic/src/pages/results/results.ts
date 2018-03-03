@@ -22,7 +22,7 @@ export class ResultsPage {
     //results data set
     options: votingOption[] = [];
     results = [];
-    backgroundColor = ['rgba(199, 0, 57, 0.2)', 'rgba(26, 82, 118, 0.2)', 'rgba(241, 196, 15 , 0.2)', 'rgba(29, 131, 72, 0.2)', 'rgba(81, 90, 90, 0.2)', 'rgba(125, 60, 152  , 0.2)'];
+    backgroundColor = ['rgba(199, 0, 57, 0.4)', 'rgba(26, 82, 118, 0.4)', 'rgba(241, 196, 15 , 0.4)', 'rgba(29, 131, 72, 0.4)', 'rgba(81, 90, 90, 0.4)', 'rgba(125, 60, 152  , 0.4)'];
     borderColor = ['rgba(199, 0, 57,1)', 'rgba(26, 82, 118, 1)', 'rgba(241, 196, 15, 1)', 'rgba(29, 131, 72, 1)', 'rgba(81, 90, 90, 1)', 'rgba(125, 60, 152  , 1)'];
     hoverBackgroundColor = ["#C70039", "#1A5276", "#F1C40F", "#1D8348", "#515A5A  ", "#7D3C98"];
     constructor(public nav: NavController, private ballotSer: BallotServiceProvider) {

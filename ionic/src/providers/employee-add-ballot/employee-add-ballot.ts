@@ -23,7 +23,6 @@ export class EmployeeAddBallotProvider {
   //set organizationID
   public setOrganizationID(organizationID) {
     this.organizationID = organizationID;
-    console.log(organizationID);
   }
   //getUsers
   getUsers() {
