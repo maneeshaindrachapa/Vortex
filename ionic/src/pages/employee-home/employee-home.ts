@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController,AlertController, LoadingController, Loading } from 'ionic-angular';
 import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
 import { BallotServiceProvider } from '../../providers/ballot-service/ballot-service';
 import { DateTime } from 'ionic-angular/components/datetime/datetime';
@@ -10,11 +10,12 @@ import { DateTime } from 'ionic-angular/components/datetime/datetime';
   templateUrl: 'employee-home.html',
 })
 export class EmployeeHomePage {
+  loading: Loading;
   username = '';
   currentDate = new Date();
   ballots: VotingBallots[] = [];
   items: VotingBallots[] = [];
-  constructor(public nav: NavController, public navParams: NavParams, private auth: AuthServiceProvider, private ballotSer: BallotServiceProvider) {
+  constructor(public nav: NavController,private alertCtrl:AlertController, private auth: AuthServiceProvider, private ballotSer: BallotServiceProvider,private loadingCtrl: LoadingController) {
     this.username = this.auth.getUser();
     this.ballotSer.setUser(this.username);
     this.initializeItems();
@@ -83,6 +84,77 @@ export class EmployeeHomePage {
   viewResults(votingballotid){
     this.ballotSer.setvotingballotid(votingballotid);
     this.nav.push("ResultsPage");
+  }
+  
+  showLoading() {
+    this.loading = this.loadingCtrl.create({
+      content: 'Please wait...',
+      dismissOnPageChange: true
+    });
+    this.loading.present();
+  }
+
+  showMessage(title,text) {
+    this.loading.dismiss();
+    let alert = this.alertCtrl.create({
+      title: title,
+      subTitle: text,
+      buttons: ['OK']
+    });
+    alert.present();
+  }
+
+  sendKeys(votingballotid){
+    this.showLoading();
+    this.ballotSer.sendMail(votingballotid,this.username).subscribe(confirmation => {
+      this.loading.dismiss();
+      this.presentPrompt(votingballotid);
+    },
+      error => {
+        this.showMessage("Error","Cannot send email");
+        console.log(error);
+      });
+  }
+  presentPrompt(votingballotid) { //Key entering field
+    let alert = this.alertCtrl.create({
+      title: 'View Results',
+      inputs: [
+        {
+          name: 'publicsecuritykey',
+          placeholder: 'Public Security Key',
+          type:'password'
+        },
+        {
+          name: 'privatesecuritykey',
+          placeholder: 'Private Security Key',
+          type: 'password'
+        }
+      ],
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          handler: data => {
+            console.log('Cancel clicked');
+          }
+        },
+        {
+          text: 'See Results',
+          handler: data => {
+            this.showLoading();
+            this.ballotSer.checkSecurity(votingballotid,data.publicsecuritykey,data.privatesecuritykey,this.username).subscribe(confirmation => {
+              this.loading.dismiss();
+              this.viewResults(votingballotid);
+            },
+              error => {
+                this.showMessage("Error","Invalid Security Keys");
+                console.log(error);
+            });
+          }
+        }
+      ]
+    });
+    alert.present();
   }
 }
 

@@ -14,7 +14,7 @@ if (sizeof($data) != null) {
     $url = $data->url;
     $noOfOptions = $data->noOfOptions;
     $options = ($data->ballotOptionsContainer);
-
+    $randomNumber = mt_rand(100000, 1000000); //making random code to change the password
     $temp = (int) $holdingHours;
     $Time = new DateTime($startDate . $startTime);
     $Time->add(new DateInterval('PT' . $temp . 'H'));
@@ -31,7 +31,7 @@ if (sizeof($data) != null) {
     $organizationID = $data2[0]['organizationID'];
 
     //create voting ballot
-    $query3 = "INSERT INTO votingBallot(organizationID,votingBallotName,votingBallotDescription,startDate,startTime,endDate,endTime,image,noOfOptions) values('$organizationID','$ballotName','$ballotDescription','$startDate','$startTime','$endDate','$endTime','$url','$noOfOptions')";
+    $query3 = "INSERT INTO votingBallot(organizationID,votingBallotName,votingBallotDescription,startDate,startTime,endDate,endTime,image,noOfOptions,publicKey) values('$organizationID','$ballotName','$ballotDescription','$startDate','$startTime','$endDate','$endTime','$url','$noOfOptions','$randomNumber')";
     $data3 = $crud->execute($query3);
 
     //get the votingBallot ID

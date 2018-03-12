@@ -4,6 +4,7 @@ import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
 import { DateTime } from 'ionic-angular/components/datetime/datetime';
 import { MenuController } from 'ionic-angular';
 import { EmployeeAddBallotProvider } from '../../providers/employee-add-ballot/employee-add-ballot';
+import { BallotServiceProvider } from '../../providers/ballot-service/ballot-service';
 
 @IonicPage()
 @Component({
@@ -12,11 +13,11 @@ import { EmployeeAddBallotProvider } from '../../providers/employee-add-ballot/e
 })
 export class ManagerHomePage {
   username = '';
-
+  currentDate = new Date();
   ballots: VotingBallots[] = [];
   items: VotingBallots[] = [];
 
-  constructor(public nav: NavController, public navParams: NavParams, private auth: AuthServiceProvider, public menuCtrl: MenuController, private EmpAddBallot: EmployeeAddBallotProvider) {
+  constructor(public nav: NavController, public navParams: NavParams, private auth: AuthServiceProvider, public menuCtrl: MenuController, private EmpAddBallot: EmployeeAddBallotProvider,private ballotSer:BallotServiceProvider) {
     this.initializeItems();
   }
 
@@ -24,6 +25,15 @@ export class ManagerHomePage {
   initializeItems() {
     this.auth.getVotingBallots().subscribe(ballots => {
       for (let i in ballots) {
+        let tempStartDate = new Date(ballots[i].startDate + 'T' + ballots[i].startTime);//assiginng temporary data to compare dates
+        let tempEndDate = new Date(ballots[i].endDate + 'T' + ballots[i].endTime);
+        if (tempStartDate < this.currentDate && this.currentDate < tempEndDate) {
+          ballots[i].addEmployees = true;
+          ballots[i].viewResults = false;
+        } else {
+          ballots[i].addEmployees = false;
+          ballots[i].viewResults = true;
+        }
         this.items.push(ballots[i]);
         this.ballots.push(ballots[i]);
       }
@@ -84,6 +94,11 @@ export class ManagerHomePage {
     console.log(votingballotID);
     this.nav.push("AddEmployeesPage");
   }
+
+  viewResults(votingballotid){
+    this.ballotSer.setvotingballotid(votingballotid);
+    this.nav.push("ResultsPage");
+  }
 }
 
 interface VotingBallots {
@@ -95,5 +110,7 @@ interface VotingBallots {
   startTime: DateTime,
   endDate: Date,
   endTime: DateTime,
-  image: string
+  image: string,
+  viewResults:boolean,
+  addEmployees:boolean
 }

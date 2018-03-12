@@ -56,4 +56,10 @@ export class BallotServiceProvider {
       "ballotOptionsContainer": ballotOptionsContainer
     }).map(res => res.json());
   }
+  public checkSecurity(votingballotid,publicsecuritykey,privatesecuritykey,username){
+    return this.http.post("http://localhost/VortexApp/api/checkSec.php",{"votingballotID":votingballotid,"publicSecurityKey":publicsecuritykey,"privateSecurityKey":privatesecuritykey,"username":username}).map(res=>res.json());
+  }
+  public sendMail(votingballotid,username){
+    return this.http.post("http://localhost/VortexApp/api/sendMail.php",{"votingballotID":votingballotid,"username":username}).map(res=>res.json());
+  }
 }

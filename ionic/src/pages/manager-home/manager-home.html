@@ -46,13 +46,13 @@
           <span class="ion-card-details">{{item.endDate}} | {{item.endTime}}</span>
           <br>
 
-          <button ion-button icon-left clear small class="result-button">
+          <button ion-button icon-left clear small class="result-button" *ngIf="item.viewResults" (click)="viewResults(item.votingballotID)">
             <ion-icon name="stats" class="ionicons"></ion-icon>&nbsp;
             <span class="ion-card-details">View Results</span>
           </button>
-          <button ion-button icon-left clear small class="adduser-button">
+          <button ion-button icon-left clear small class="adduser-button" *ngIf="item.addEmployees" (click)="addEmployee(item.votingballotID,item.organizationID)">
             <ion-icon name="person-add" class="ionicons"></ion-icon>&nbsp;
-            <span class="ion-card-details" (click)="addEmployee(item.votingballotID,item.organizationID)">Add Employees</span>
+            <span class="ion-card-details" >Add Employees</span>
           </button>
         </ion-card-content>
       </ion-card>
