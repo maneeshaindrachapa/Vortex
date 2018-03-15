@@ -9,7 +9,7 @@ import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
 })
 export class SignUpPage {
   createSuccess = false;
-  registerCredentials = { firstname: '', lastname: '', email: '', username: '', password: '' };
+  registerCredentials = { firstname: '', lastname: '', email: '', username: '', password: '',organizationID:'1' };
   organizations: Organization[] = [];
 
   constructor(public nav: NavController, private alertCtrl: AlertController, private auth: AuthServiceProvider) {
@@ -66,6 +66,7 @@ export class SignUpPage {
 
 interface Organization {
   organizationID: number,
+  organizationRegNo: string,
   organizationName: string,
   organiztionAddress: string
 }
