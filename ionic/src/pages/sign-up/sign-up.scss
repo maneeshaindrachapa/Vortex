@@ -21,7 +21,9 @@ page-sign-up {
            border-bottom: 0px !important;
            box-shadow: none !important;
        }
-   
+       .ion-select{
+         min-width: 90%;
+       }
        .signup-col {
          margin: 0px 16px 0px 16px;
          padding-bottom: 20px;
