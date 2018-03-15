@@ -5,8 +5,8 @@ page-login {
       background-repeat: none;
       background-size: cover;
       .logo-row {
-        padding-top: 30px;
-        padding-bottom: 20px;
+        padding-top: 15px;
+        padding-bottom: 15px;
       }
  
       ion-row {
@@ -26,7 +26,7 @@ page-login {
    
        .signin-col {
          margin: 0px 16px 0px 16px;
-         padding-bottom: 20px;
+         padding-bottom: 8px;
        }
    
        .item-inner {
@@ -41,9 +41,9 @@ page-login {
          border: 1px solid #FFF;
        }
    
-       .register-btn {
+       .register-btn,.contactUs-btn {
          color: #FFFFFF;
-         font-size: 1.0em;
+         font-size: 0.9em;
        }
 
        .forgetpassword-btn{
