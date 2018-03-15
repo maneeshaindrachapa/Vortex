@@ -25,11 +25,16 @@ export class LoginPage {
     this.nav.push("ForgetpasswordPage");
   }
 
+  //navigate to contactus 
+  public contactUs(){
+    this.nav.push("ContactUsPage");
+  }
+
   //when click the login button
   public login() {
     this.showLoading();
     this.auth.login(this.registerCredentials).subscribe(allowed => {
-      if (allowed) {
+      if (allowed!="-1") {
         this.auth.setUser(allowed.username); //setting username
         if (allowed.type == "1") {
           this.nav.setRoot('EmployeeHomePage');
