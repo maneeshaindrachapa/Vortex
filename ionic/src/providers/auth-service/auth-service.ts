@@ -42,11 +42,12 @@ export class AuthServiceProvider {
 
   //register
   public register(credentials) {
-    if (credentials.email === null || credentials.password === null || credentials.firstname === null || credentials.lastname === null || credentials.email == null) {
-      return Observable.throw("Please insert your credentials");
-    } else {
-      return this.http.post("http://localhost/VortexApp/api/signup.php", { "username": credentials.username, "firstname": credentials.firstname, "lastname": credentials.lastname, "password": credentials.password, "email": credentials.email, "organiztionId": 1 }).map(res => res.json());
-    }
+      return this.http.post("http://localhost/VortexApp/api/signup.php", { "username": credentials.username, "firstname": credentials.firstname, "lastname": credentials.lastname, "password": credentials.password, "email": credentials.email, "organizationID": credentials.organizationID }).map(res => res.json());
+  }
+
+  //register company
+  public registerCompany(credentials) {
+      return this.http.post("http://localhost/VortexApp/api/signup.php", { "username": credentials.username, "firstname": credentials.firstname, "lastname": credentials.lastname, "password": credentials.password, "email": credentials.email, "organiztionRegNo":credentials.comRegNo,"organizationName":credentials.companyName,"organizationAddress":credentials.address  }).map(res => res.json());
   }
 
   //load organizations
