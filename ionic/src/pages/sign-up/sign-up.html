@@ -31,9 +31,10 @@
           </ion-item>
 
           <ion-item>
-            <ion-select *ngFor="let organization of organizations">
-              <ion-option value="{{organization.organizationsID}}">
-                <strong>{{organization.organizationName}}:</strong>{{organization.organizationAddress}}</ion-option>
+            <ion-select class="ion-select" name="organizationID" [(ngModel)]="registerCredentials.organizationID">
+              <ion-option *ngFor="let organization of organizations" value={{organization.organizationID}}>
+                <strong>{{organization.organizationRegNo}} : </strong>{{organization.organizationName}}
+              </ion-option>
             </ion-select>
           </ion-item>
 
