@@ -1,0 +1,55 @@
+<ion-header>
+  <ion-navbar color="dark">
+    <ion-title>Contact</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="contact-content" padding>
+  <form (ngSubmit)="register()" #registerForm="ngForm">
+    <ion-row>
+      <ion-col>
+        <ion-list inset>
+
+          <ion-item>
+            <ion-input type="text" placeholder="First Name" name="firstname" [(ngModel)]="registerCompanyCredentials.firstname" required></ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-input type="text" placeholder="Last Name" name="lastname" [(ngModel)]="registerCompanyCredentials.lastname" required></ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-input type="text" placeholder="E-mail" name="email" [(ngModel)]="registerCompanyCredentials.email" required></ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-input type="text" placeholder="Username" name="username" [(ngModel)]="registerCompanyCredentials.username" required></ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-input type="password" placeholder="Password" name="password" [(ngModel)]="registerCompanyCredentials.password" required></ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-input type="text" placeholder="Company Register Number" name="companyRegNo" [(ngModel)]="registerCompanyCredentials.companyRegNo" required></ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-input type="text" placeholder="Company Name" name="companyName" [(ngModel)]="registerCompanyCredentials.companyName" required></ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-input type="text" placeholder="Address of Company" name="address" [(ngModel)]="registerCompanyCredentials.address" required></ion-input>
+          </ion-item>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col class="contact-col">
+        <button ion-button class="submit-btn" full type="submit" [disabled]="!registerForm.form.valid">Company Register</button>
+      </ion-col>
+    </ion-row>
+
+  </form>
+</ion-content>
