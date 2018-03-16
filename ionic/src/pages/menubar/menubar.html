@@ -7,15 +7,16 @@
 
   <ion-content class="content-color">
     <ion-list>
-      <button ion-item (click)="openPage('CreateVotingBallotPage')" class="content-color">
+      <button ion-item (click)="openPage('CreateVotingBallotPage')" class="button">
         <ion-icon name="pulse"></ion-icon>Create Voting Ballot
       </button>
-      <button ion-item (click)="openPage('EditProfilePage')" class="content-color">
+      <button ion-item (click)="openPage('EditProfilePage')" class="button">
         <ion-icon name="contact"></ion-icon>Edit Profile
       </button>
-      <button ion-item (click)="openPage('ConfirmUserPage')" class="content-color">
-          <ion-icon name="people"></ion-icon>User Requests
-        </button>
+      <button ion-item (click)="openPage('ConfirmUserPage')" class="button">
+        <ion-icon name="people"></ion-icon>User Requests
+        <span class="requests">{{requests}}</span>
+      </button>
     </ion-list>
   </ion-content>
 </ion-menu>
