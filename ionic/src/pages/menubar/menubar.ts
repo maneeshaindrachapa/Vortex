@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { ManagerHomePage } from "./../manager-home/manager-home";
+import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
 
 export interface PageInterface {
   title: string;
@@ -17,8 +18,22 @@ export interface PageInterface {
 })
 export class MenubarPage {
   rootPage = 'ManagerHomePage';
-
-  constructor(public nav: NavController, public navParams: NavParams) {
+  username:string;
+  requests:string='0';
+  constructor(public nav: NavController, public navParams: NavParams,private auth:AuthServiceProvider) {
+    this.username=this.auth.getUser();
+    this.getRequests();
+    console.log("ass");
+  }
+  //requests
+  getRequests(){
+    this.auth.getRequestNo(this.username).subscribe(requests => {
+     console.log(requests); 
+     this.requests=requests;
+    },
+      error => {
+       console.log("error");
+    });
   }
 
   //open pages
