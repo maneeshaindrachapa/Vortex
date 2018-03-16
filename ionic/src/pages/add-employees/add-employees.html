@@ -8,7 +8,6 @@
 
 <ion-content class="ion-content">
   <ion-searchbar (ionInput)="getUserDetails($event)"></ion-searchbar>
-  <form>
     <ion-item *ngFor="let item of items" class="ion-item">
       <ion-buttons start>
         <button ion-button icon-left clear small (click)="addUser(item.username)">
@@ -25,5 +24,4 @@
         </button>
       </ion-buttons>
     </ion-item>
-  </form>
 </ion-content>
