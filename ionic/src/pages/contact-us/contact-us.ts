@@ -24,7 +24,7 @@ export class ContactUsPage {
       }
     },
       error => {
-        this.showPopup("Error", "Invaild User Details");
+        this.showPopup("Error", "Invaild Details");
       });
   }
 
