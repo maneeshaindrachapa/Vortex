@@ -1,10 +1,16 @@
 <ion-header>
   <ion-navbar color="dark">
     <ion-title>Contact</ion-title>
+    <ion-buttons end>
+        <button ion-button (click)="help()">
+          <ion-icon name="help-circle"></ion-icon>
+        </button>
+      </ion-buttons>
   </ion-navbar>
 </ion-header>
 
 <ion-content class="contact-content" padding>
+  
   <form (ngSubmit)="register()" #registerForm="ngForm">
     <ion-row>
       <ion-col>

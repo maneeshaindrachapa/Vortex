@@ -46,5 +46,18 @@ export class ContactUsPage {
     alert.present();
   }
 
-
+  help(){
+    let alert=this.alertCtrl.create({
+      title:"About Vortex",
+      subTitle:'A vote is a formal expression of an individual&#39;s choice, either “for” or “against” some motion.When it comes to decision making in organizations, small voting ballots are held so that the workers in the organization could vote.Those voting ballots in organizations are done manually and are held only for a limited period of time (usually up to 2-5 hours). Vortex is a solution to held those ballots in an efficinet way',
+      buttons:[{
+        text:"OK",
+        role: 'cancel',
+        handler: data => {
+          console.log('Cancel clicked');
+        }
+      }]
+    });
+    alert.present();
+  }
 }
