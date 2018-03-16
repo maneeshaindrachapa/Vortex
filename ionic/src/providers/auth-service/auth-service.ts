@@ -47,7 +47,7 @@ export class AuthServiceProvider {
 
   //register company
   public registerCompany(credentials) {
-      return this.http.post("http://localhost/VortexApp/api/registerCompany.php", { "username": credentials.username, "firstname": credentials.firstname, "lastname": credentials.lastname, "password": credentials.password, "email": credentials.email, "organiztionRegNo":credentials.comRegNo,"organizationName":credentials.companyName,"organizationAddress":credentials.address  }).map(res => res.json());
+      return this.http.post("http://localhost/VortexApp/api/registerCompany.php", { "username": credentials.username, "firstname": credentials.firstname, "lastname": credentials.lastname, "password": credentials.password, "email": credentials.email, "organizationRegNo":credentials.companyRegNo,"organizationName":credentials.companyName,"organizationAddress":credentials.address  }).map(res => res.json());
   }
 
   //load organizations
