@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController, LoadingController, Loading } from 'ionic-angular';
+import { IonicPage, NavController, AlertController, LoadingController, Loading } from 'ionic-angular';
 import { EmployeeAddBallotProvider } from '../../providers/employee-add-ballot/employee-add-ballot';
 
 @IonicPage()
@@ -13,7 +13,7 @@ export class AddEmployeesPage {
   items: user[] = [];
   users: user[] = [];
   addedVoters: user[] = [];
-  constructor(public navCtrl: NavController, public navParams: NavParams, private empAddBallot: EmployeeAddBallotProvider, private alertCtrl: AlertController, private loadingCtrl: LoadingController) {
+  constructor(public navCtrl: NavController, private empAddBallot: EmployeeAddBallotProvider, private alertCtrl: AlertController, private loadingCtrl: LoadingController) {
     this.initializeItems();
     this.ballotID = this.empAddBallot.getballotID();
   }

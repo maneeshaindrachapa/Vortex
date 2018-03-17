@@ -19,16 +19,15 @@ export interface PageInterface {
 export class MenubarPage {
   rootPage = 'ManagerHomePage';
   username:string;
-  requests:string='0';
+  requests='0';
   constructor(public nav: NavController, public navParams: NavParams,private auth:AuthServiceProvider) {
     this.username=this.auth.getUser();
     this.getRequests();
-    console.log("ass");
   }
+  
   //requests
   getRequests(){
     this.auth.getRequestNo(this.username).subscribe(requests => {
-     console.log(requests); 
      this.requests=requests;
     },
       error => {
