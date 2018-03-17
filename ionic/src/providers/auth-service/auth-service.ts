@@ -84,4 +84,14 @@ export class AuthServiceProvider {
   public getRequestNo(username) {
     return this.http.post("http://localhost/VortexApp/api/getRequestNo.php", { "username": username}).map(res => res.json());
   }
+
+  //get unaccepted users
+  public getUnacceptedUsers(username) {
+    return this.http.post("http://localhost/VortexApp/api/getUnacceptedUsers.php", { "username": username}).map(res => res.json());
+  }
+
+  //accept user
+  public acceptUser(username) {
+    return this.http.post("http://localhost/VortexApp/api/acceptUser.php", { "username": username}).map(res => res.json());
+  }
 }
