@@ -1,0 +1,18 @@
+page-confirm-user {
+    .confirmuser-contact {
+        background-image:url("../../assets/imgs/blurrybackground.jpg");
+        background-repeat: none;
+        background-size: cover;
+    }
+    .ion-item{
+        background-color: rgba(0, 0, 0, 0.425);
+    }
+    ion-icon{
+        color: #fff;
+    }
+    .span-class{
+        margin-left:5%;
+        color: #fff;
+        font-size:1.1em;
+    }
+}

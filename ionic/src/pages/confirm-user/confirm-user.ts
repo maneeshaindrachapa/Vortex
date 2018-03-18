@@ -33,6 +33,8 @@ export class ConfirmUserPage {
     this.showLoading();
     this.auth.acceptUser(username).subscribe(user => {
       this.showMessage("Success","User accepted to the Organization");
+      this.users=[];
+      this.getUnacceptedUsers();
     },
       error => {
         this.showMessage("Error","There is an error in Connection");

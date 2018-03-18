@@ -1,0 +1,16 @@
+<ion-header>
+    <ion-navbar color="dark">
+        <ion-title>User Requests</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content class='confirmuser-contact' padding>
+    <ion-item *ngFor="let user of users" class="ion-item">
+        <ion-buttons start>
+            <button ion-button icon-left clear small (click)="acceptUser(user.username)">
+                <ion-icon name="checkmark"></ion-icon>
+                <span class="span-class">{{user.firstname}} &nbsp; {{user.lastname}}</span>
+            </button>
+        </ion-buttons>
+    </ion-item>
+</ion-content>
