@@ -1,0 +1,25 @@
+page-admin {
+    .content-contact {
+        background-image:url("../../assets/imgs/blurrybackground.jpg");
+        background-repeat: none;
+        background-size: cover;
+        color: #fff;
+    }
+    .ion-item{
+        background-color: rgba(0, 0, 0, 0.425);
+    }
+    ion-icon{
+        color: #fff;
+    }
+    h4{
+        font-size: 1em;
+    }
+    .span-class{
+        margin-left:5%;
+        color: #fff;
+        font-size:1.1em;
+    }
+    ion-content.has-refresher > .scroll-content{
+        background-color: transparent;
+    }
+}

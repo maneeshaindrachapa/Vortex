@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-navbar color="dark">
+    <ion-title>Admin</ion-title>
+    <ion-buttons end>
+      <button ion-button (click)="logout()">
+        <ion-icon name="log-out"></ion-icon>
+      </button>
+      <button ion-button (click)="editProfile()">
+        <ion-icon name="contact"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class='content-contact' padding>
+  <!-- added a refresher to refresh page-->
+  <ion-refresher (ionRefresh)="doRefresh($event)" class="ion-refresh">
+    <ion-refresher-content pullingIcon="arrow-dropdown" pullingText="" refreshingSpinner="circles" refreshingText="Refreshing...">
+    </ion-refresher-content>
+  </ion-refresher>
+
+  <h2>Organizations,wants to Register</h2>
+  <ion-item *ngFor="let organization of organizations" class="ion-item">
+    <ion-buttons start>
+      <button ion-button icon-left clear small (click)="acceptOrganization(organization.organizationID)">
+        <ion-icon name="checkmark"></ion-icon>
+        <span class="span-class">{{organization.organizationName}} |&nbsp; {{organization.organizationAddress}}</span>
+      </button>
+    </ion-buttons>
+  </ion-item>
+  <h4 *ngIf="!isOrganization">There are no Organizations to Register</h4>
+</ion-content>
