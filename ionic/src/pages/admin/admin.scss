@@ -7,12 +7,18 @@ page-admin {
     }
     .ion-item{
         background-color: rgba(0, 0, 0, 0.425);
+        width:100%;
+        padding-left: 5%;
     }
     ion-icon{
         color: #fff;
     }
+    h2{
+        padding-left: 5%;
+    }
     h4{
         font-size: 1em;
+        padding-left: 5%;
     }
     .span-class{
         margin-left:5%;
