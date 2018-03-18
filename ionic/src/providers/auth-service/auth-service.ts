@@ -100,4 +100,9 @@ export class AuthServiceProvider {
     return this.http.get("http://localhost/VortexApp/api/getUnacceptedOrganizations.php").map(res => res.json());
   }
 
+  //accept an organization
+  public acceptOrganizations(organizationID){
+    return this.http.post("http://localhost/VortexApp/api/acceptOrganization.php", { "oraganizationID": organizationID}).map(res => res.json());
+  }
+
 }

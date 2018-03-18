@@ -22,12 +22,27 @@ export class AdminPage {
       }
       if(this.organizations.length!=0){
         this.isOrganization=true;
+      }else{
+        this.isOrganization=false;
       }
     },
       error => {
         console.log(error);
       });
   }
+  //accept organization
+  acceptOrganization(organizationID){
+    this.showLoading();
+    this.auth.acceptOrganizations(organizationID).subscribe(org => {
+      this.showMessage("Sucess","Organization Accepted.");
+      this.organizations=[];
+      this.getUnacceptedORganization();
+    },
+      error => {
+        console.log(error);
+      });
+  }
+
   //refresh Page
   doRefresh(refresher) {
     console.log('Begin async operation', refresher);
@@ -38,16 +53,18 @@ export class AdminPage {
       refresher.complete();
     }, 2000);
   }
+
   //user logout
   logout() {
     this.auth.logout().subscribe(succ => {
       this.nav.setRoot('LoginPage')
     });
   }
+  //edit profile 
   editProfile() {
     this.nav.push('EditProfilePage');
   }
-
+  //loading
   showLoading() {
     this.loading = this.loadingCtrl.create({
       content: 'Please wait...',
@@ -55,7 +72,7 @@ export class AdminPage {
     });
     this.loading.present();
   }
-
+  //show message
   showMessage(title,text) {
     this.loading.dismiss();
     let alert = this.alertCtrl.create({
