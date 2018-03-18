@@ -40,6 +40,8 @@ export class LoginPage {
           this.nav.setRoot('EmployeeHomePage');
         } else if (allowed.type == "2") {
           this.nav.setRoot('MenubarPage');//manager will have a menubar
+        }else if(allowed.type=="3"){
+          this.nav.setRoot('AdminPage');//goes to admin page
         }
       } else {
         this.showError("Access Denied");
