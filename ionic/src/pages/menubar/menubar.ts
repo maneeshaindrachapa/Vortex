@@ -39,7 +39,14 @@ export class MenubarPage {
   openPage(pagename) {
     this.nav.push(pagename);
   }
-
+  menuOpened(){
+    this.username=this.auth.getUser();
+    this.getRequests();
+  }
+  menuClosed(){
+    this.username=this.auth.getUser();
+    this.getRequests();
+  }
 
 
 }
