@@ -24,16 +24,16 @@ export class ForgetPasswordProvider {
   //forget password send email
   public sendEmail(email) {
     this.setEmail(email);
-    return this.http.post("http://localhost/VortexApp/api/forgetpassword/forgetPassword.php", { "email": email }).map(res => res.json());
+    return this.http.post("http://maneeshaindrachapamora.000webhostapp.com/vortex/api/forgetpassword/forgetPassword.php", JSON.stringify({ "email": email })).map(res => res.json());
   }
 
   //check code is correct
   public checkCode(email, code) {
-    return this.http.post("http://localhost/VortexApp/api/forgetpassword/checkCode.php", { "email": email, "code": code }).map(res => res.json());
+    return this.http.post("http://maneeshaindrachapamora.000webhostapp.com/vortex/api/forgetpassword/checkCode.php", JSON.stringify({ "email": email, "code": code })).map(res => res.json());
   }
 
   //change password
   public changePassword(email, password) {
-    return this.http.post("http://localhost/VortexApp/api/forgetpassword/changePassword.php", { "email": email, "password": password }).map(res => res.json());
+    return this.http.post("http://maneeshaindrachapamora.000webhostapp.com/vortex/api/forgetpassword/changePassword.php", JSON.stringify({ "email": email, "password": password })).map(res => res.json());
   }
 }

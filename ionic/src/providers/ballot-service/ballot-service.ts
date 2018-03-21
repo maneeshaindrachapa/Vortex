@@ -31,20 +31,20 @@ export class BallotServiceProvider {
 
   //get voting options
   public getvotingOptions(votingBallotID) {
-    return this.http.post("http://localhost/VortexApp/api/EmployeeVotings/getVotingOptions.php", { "votingballotID": votingBallotID }).map(res => res.json());
+    return this.http.post("http://maneeshaindrachapamora.000webhostapp.com/vortex/api/EmployeeVotings/getVotingOptions.php", JSON.stringify({ "votingballotID": votingBallotID })).map(res => res.json());
   }
   //get results
   public getResults(votingBallotID,votingOptionIDs){
-    return this.http.post("http://localhost/VortexApp/api/EmployeeVotings/getResults.php", { "votingballotID": votingBallotID,"votingoptionIDs":votingOptionIDs }).map(res => res.json());
+    return this.http.post("http://maneeshaindrachapamora.000webhostapp.com/vortex/api/EmployeeVotings/getResults.php", JSON.stringify({ "votingballotID": votingBallotID,"votingoptionIDs":votingOptionIDs })).map(res => res.json());
   }
 
   //add voting
   public employeeAddVote(vote) {
-    return this.http.post("http://localhost/VortexApp/api/EmployeeVotings/AddEmployeeVote.php", { "votingballotID": this.votingBallotID, "username": this.username, "votingoptionID": vote }).map(res => res.json());
+    return this.http.post("http://maneeshaindrachapamora.000webhostapp.com/vortex/api/EmployeeVotings/AddEmployeeVote.php", JSON.stringify({ "votingballotID": this.votingBallotID, "username": this.username, "votingoptionID": vote })).map(res => res.json());
   }
   //make a voting ballot
   public createVotingBallot(ballotDetails, noOfOptions, ballotOptionsContainer) {
-    return this.http.post("http://localhost/VortexApp/api/createBallot.php", {
+    return this.http.post("http://maneeshaindrachapamora.000webhostapp.com/vortex/api/createBallot.php", JSON.stringify({
       "username": this.username,
       "ballotName": ballotDetails.ballotName,
       "ballotDescription": ballotDetails.ballotDescription,
@@ -54,12 +54,12 @@ export class BallotServiceProvider {
       "url": ballotDetails.url,
       "noOfOptions": noOfOptions,
       "ballotOptionsContainer": ballotOptionsContainer
-    }).map(res => res.json());
+    })).map(res => res.json());
   }
   public checkSecurity(votingballotid,publicsecuritykey,privatesecuritykey,username){
-    return this.http.post("http://localhost/VortexApp/api/checkSec.php",{"votingballotID":votingballotid,"publicSecurityKey":publicsecuritykey,"privateSecurityKey":privatesecuritykey,"username":username}).map(res=>res.json());
+    return this.http.post("http://maneeshaindrachapamora.000webhostapp.com/vortex/api/checkSec.php",JSON.stringify({"votingballotID":votingballotid,"publicSecurityKey":publicsecuritykey,"privateSecurityKey":privatesecuritykey,"username":username})).map(res=>res.json());
   }
   public sendMail(votingballotid,username){
-    return this.http.post("http://localhost/VortexApp/api/sendMail.php",{"votingballotID":votingballotid,"username":username}).map(res=>res.json());
+    return this.http.post("http://maneeshaindrachapamora.000webhostapp.com/vortex/api/sendMail.php",JSON.stringify({"votingballotID":votingballotid,"username":username})).map(res=>res.json());
   }
 }
