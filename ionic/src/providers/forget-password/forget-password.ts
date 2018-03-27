@@ -24,7 +24,7 @@ export class ForgetPasswordProvider {
   //forget password send email
   public sendEmail(email) {
     this.setEmail(email);
-    return this.http.post("http://maneeshaindrachapamora.000webhostapp.com/vortex/api/forgetpassword/forgetPassword.php", JSON.stringify({ "email": email })).map(res => res.json());
+    return this.http.post("http://maneeshaindrachapamora.000webhostapp.com/vortex/api/forgetpassword/forgetpassword.php", JSON.stringify({ "email": email })).map(res => res.json());
   }
 
   //check code is correct
