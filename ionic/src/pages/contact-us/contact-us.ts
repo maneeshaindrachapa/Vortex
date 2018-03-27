@@ -16,10 +16,22 @@ export class ContactUsPage {
   //when user sign up
   public register() {
     this.auth.registerCompany(this.registerCompanyCredentials).subscribe(success => {
-      if (success) {
+      if (success=="7") {
         this.createSuccess = true;
         this.showPopup("Success", "Details are Sent.");
-      } else {
+      }else if (success=="1") {
+        this.showPopup("Error", "Invalid Firstname.");
+      }else if (success=="2") {
+        this.showPopup("Error", "Invalid Lastname.");
+      }else if (success=="3") {
+        this.showPopup("Error", "Invalid Email.");
+      } else if (success=="4") {
+        this.showPopup("Error", "Username is Already in Use.");
+      }else if (success=="5") {
+        this.showPopup("Error", "Email is Already in use.");
+      }else if (success=="6") {
+        this.showPopup("Error", "The Organization is Already Registered");
+      }else {
         this.showPopup("Error", "Problem While Sending Details.");
       }
     },
