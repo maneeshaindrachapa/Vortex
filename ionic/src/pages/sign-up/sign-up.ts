@@ -19,10 +19,20 @@ export class SignUpPage {
   //when user sign up
   public register() {
     this.auth.register(this.registerCredentials).subscribe(success => {
-      if (success) {
+      if (success=="4") {
         this.createSuccess = true;
         this.showPopup("Success", "Account Created.");
-      } else {
+      } else if(success=="1") {
+        this.showPopup("Error", "Invalid Firstname.");
+      } else if(success=="2") {
+        this.showPopup("Error", "Invalid Lastname.");
+      } else if(success=="3") {
+        this.showPopup("Error", "Invalid E-mail.");
+      } else if(success=="5") {
+        this.showPopup("Error", "This Username is Already Used");
+      } else if(success=="6") {
+        this.showPopup("Error", "This Email is Already Used");
+      }else{
         this.showPopup("Error", "Problem While Creating Account.");
       }
     },
