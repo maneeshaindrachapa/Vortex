@@ -70,7 +70,8 @@ export class ManagerHomePage {
   //refresh Page
   doRefresh(refresher) {
     console.log('Begin async operation', refresher);
-    this.items = []; //making all the items null then runst the async operation to get new items
+    this.items = [];
+    this.ballots=[]; //making all the items null then runst the async operation to get new items
     this.initializeItems();
     setTimeout(() => {
       refresher.complete();
@@ -116,6 +117,7 @@ export class ManagerHomePage {
           handler: () => {
             this.ballotSer.removeBallot(votingballotid).subscribe(requests => {
               this.items=[];
+              this.ballots=[];
               this.initializeItems();
              },
                error => {
