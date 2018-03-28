@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams,AlertController  } from 'ionic-angular';
 import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
 import { DateTime } from 'ionic-angular/components/datetime/datetime';
 import { MenuController } from 'ionic-angular';
@@ -17,7 +17,7 @@ export class ManagerHomePage {
   ballots: VotingBallots[] = [];
   items: VotingBallots[] = [];
 
-  constructor(public nav: NavController, public navParams: NavParams, private auth: AuthServiceProvider, public menuCtrl: MenuController, private EmpAddBallot: EmployeeAddBallotProvider,private ballotSer:BallotServiceProvider) {
+  constructor(public nav: NavController, public navParams: NavParams, private auth: AuthServiceProvider, public menuCtrl: MenuController, private EmpAddBallot: EmployeeAddBallotProvider,private ballotSer:BallotServiceProvider,private alertCtrl: AlertController) {
     this.initializeItems();
   }
 
@@ -72,7 +72,6 @@ export class ManagerHomePage {
     console.log('Begin async operation', refresher);
     this.items = []; //making all the items null then runst the async operation to get new items
     this.initializeItems();
-
     setTimeout(() => {
       refresher.complete();
     }, 2000);
@@ -98,6 +97,35 @@ export class ManagerHomePage {
   viewResults(votingballotid){
     this.ballotSer.setvotingballotid(votingballotid);
     this.nav.push("ResultsPage");
+  }
+
+  remove(votingballotid){
+    let alert = this.alertCtrl.create({
+      title: 'Delete Voting Ballot',
+      message: 'Do you want to delete this ballot and all the votings related to this ballot?',
+      buttons: [
+        {
+          text: 'No',
+          role: 'cancel',
+          handler: () => {
+            console.log('Cancel clicked');
+          }
+        },
+        {
+          text: 'Yes',
+          handler: () => {
+            this.ballotSer.removeBallot(votingballotid).subscribe(requests => {
+              this.items=[];
+              this.initializeItems();
+             },
+               error => {
+                console.log(error);
+             });
+          }
+        }
+      ]
+    });
+    alert.present();
   }
 }
 

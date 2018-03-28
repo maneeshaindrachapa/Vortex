@@ -62,4 +62,7 @@ export class BallotServiceProvider {
   public sendMail(votingballotid,username){
     return this.http.post("http://maneeshaindrachapamora.000webhostapp.com/vortex/api/sendMail.php",JSON.stringify({"votingballotID":votingballotid,"username":username})).map(res=>res.json());
   }
+  public removeBallot(votingballotid){
+    return this.http.post("http://maneeshaindrachapamora.000webhostapp.com/vortex/api/removeBallot.php",JSON.stringify({"votingballotID":votingballotid})).map(res=>res.json());
+  }
 }
