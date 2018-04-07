@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController, LoadingController, Loading } from 'ionic-angular';
+import { IonicPage, NavController, AlertController, LoadingController, Loading } from 'ionic-angular';
 import { ForgetPasswordProvider } from '../../providers/forget-password/forget-password';
 
 @IonicPage()

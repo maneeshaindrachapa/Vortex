@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController, LoadingController, Loading, DateTime} from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController, LoadingController, Loading} from 'ionic-angular';
 import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
 import { BallotServiceProvider } from '../../providers/ballot-service/ballot-service';
 
