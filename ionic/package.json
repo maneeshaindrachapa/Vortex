@@ -9,7 +9,13 @@
     "build": "ionic-app-scripts build",
     "lint": "ionic-app-scripts lint",
     "ionic:build": "ionic-app-scripts build",
-    "ionic:serve": "ionic-app-scripts serve"
+    "ionic:serve": "ionic-app-scripts serve",
+    "test": "ng test --config ./config/karma.conf.js",
+    "test-ci": "ng test --config ./config/karma.conf.js --watch=false --code-coverage",
+    "test-coverage": "ng test --config ./config/karma.conf.js --code-coverage",
+    "e2e": "npm run e2e-update && npm run e2e-test",
+    "e2e-test": "protractor ./config/protractor.conf.js",
+    "e2e-update": "webdriver-manager update --standalone false --gecko false"
   },
   "dependencies": {
     "@angular/common": "5.0.3",
@@ -41,11 +47,18 @@
     "zone.js": "0.8.18"
   },
   "devDependencies": {
+    "@angular/cli": "^1.7.4",
     "@ionic/app-scripts": "3.1.8",
+    "jasmine-core": "~2.6.2",
+    "jasmine-spec-reporter": "~4.1.0",
     "karma": "^2.0.0",
     "karma-chrome-launcher": "^2.2.0",
+    "karma-cli": "~1.0.1",
+    "karma-coverage-istanbul-reporter": "^1.2.1",
     "karma-jasmine": "^1.1.1",
+    "karma-jasmine-html-reporter": "^0.2.2",
     "karma-phantomjs-launcher": "^1.0.4",
+    "protractor": "~5.1.2",
     "typescript": "2.4.2"
   },
   "description": "An Ionic project",

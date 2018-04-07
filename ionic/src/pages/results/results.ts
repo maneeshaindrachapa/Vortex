@@ -1,5 +1,5 @@
 import { ViewChild, Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController} from 'ionic-angular';
 import { Chart } from 'chart.js';
 import { BallotServiceProvider } from '../../providers/ballot-service/ballot-service';
 
