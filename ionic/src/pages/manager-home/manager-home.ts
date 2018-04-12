@@ -77,12 +77,36 @@ export class ManagerHomePage {
       refresher.complete();
     }, 2000);
   }
+  
   //user logout
   logout() {
-    this.auth.logout().subscribe(succ => {
-      this.nav.setRoot('LoginPage')
+    let alert = this.alertCtrl.create({
+      title: 'Logout',
+      message: 'Do you want to Logout ?',
+      buttons: [
+        {
+          text: 'No',
+          role: 'cancel',
+          handler: () => {
+            console.log('Cancel clicked');
+          }
+        },
+        {
+          text: 'Yes',
+          handler: () => {
+            this.auth.logout().subscribe(succ => {
+              this.nav.setRoot('LoginPage');
+            },
+              error => {
+                console.log(error);
+              });
+          }
+        }
+      ]
     });
+    alert.present();
   }
+
   //menu open
   openMenu() {
     this.menuCtrl.open();
