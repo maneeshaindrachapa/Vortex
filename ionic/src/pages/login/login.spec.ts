@@ -67,7 +67,8 @@ describe('Page:Login Page', () => {
 
         de = fixture.debugElement.query(By.css('.submit-btn'));
         de.triggerEventHandler('click', null);
-        expect(authService.login({username:"maneesha",password:"123123123"})).toBeTruthy});
+        expect(authService.login({username:"maneesha",password:"123123123"})).toBeTruthy
+    });
 
     //navigation testing
     it('Should go to SignUp Page', () => {
