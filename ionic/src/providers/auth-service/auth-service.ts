@@ -4,11 +4,12 @@ import { Injectable } from '@angular/core';
 import { Http, Headers } from "@angular/http";
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
+import { Storage } from '@ionic/storage';
 
 @Injectable()
 export class AuthServiceProvider {
   username: string;
-  constructor(public http: Http) {
+  constructor(public http: Http, private storage:Storage) {
   }
   //set user
   public setUser(username) {
@@ -33,6 +34,8 @@ export class AuthServiceProvider {
 
   //log out
   public logout() {
+    this.storage.clear();
+    this.storage.set("userDetails",{username:"",password:""});
     return Observable.create(observer => {
       observer.next(true);
       observer.complete();

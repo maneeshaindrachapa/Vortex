@@ -1,4 +1,5 @@
 <ion-content class="login-content" padding>
+  <div *ngIf=viewShow>
   <ion-row class="logo-row">
 
     <ion-col width-67>
@@ -25,7 +26,7 @@
 
     <ion-row>
       <ion-col class="signin-col">
-        <button ion-button class="submit-btn" full type="submit" (click)="login()">Login</button><!--[disabled]="!registerForm.form.valid"-->
+        <button ion-button class="submit-btn" full type="submit" [disabled]="!registerForm.form.valid" (click)="login()">Login</button><!---->
         <button ion-button class="register-btn" block clear (click)="createAccount()">Create New Account</button>
         <button ion-button class="forgetpassword-btn" block clear (click)="forgetpassword()">Forgot Password ?</button>
         <button ion-button class="contactUs-btn" block clear (click)="contactUs()">Contact Us</button>
@@ -33,4 +34,5 @@
     </ion-row>
 
   </form>
+  </div>
 </ion-content>
