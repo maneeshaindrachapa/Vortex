@@ -12,9 +12,9 @@ export class LoginPage {
   //declaring variables
   loading: Loading;
   registerCredentials = { username: "", password: "" };
-  viewShow:boolean=true;
+  viewShow: boolean = true;
 
-  constructor(private nav: NavController, private auth: AuthServiceProvider, private alertCtrl: AlertController, private loadingCtrl: LoadingController,private storage: Storage) {
+  constructor(private nav: NavController, private auth: AuthServiceProvider, private alertCtrl: AlertController, private loadingCtrl: LoadingController, private storage: Storage) {
     this.getStorage();
   }
 
@@ -29,61 +29,67 @@ export class LoginPage {
   }
 
   //navigate to contactus 
-  public contactUs(){
+  public contactUs() {
     this.nav.push("ContactUsPage");
   }
 
   //storage access
-  public getStorage(){
-    this.storage.get("userDetails").then(val=>{
-      this.registerCredentials=val; 
-      if(this.registerCredentials.username.length>0 && this.registerCredentials.password.length>0){
-        this.viewShow=false;
-        this.login();
-      }else{
-        this.viewShow=true;
-      };
-    });
-    ;
+  public getStorage() {
+    if (this.storage.ready) {
+      this.storage.get("userDetails").then(val => {
+        if (val) {
+          this.registerCredentials = val;
+        }
+        if ((this.registerCredentials.username.length > 0) && (this.registerCredentials.password.length > 0)) {
+          this.viewShow = false;
+          this.login();
+        } else {
+          this.registerCredentials.username = "";
+          this.registerCredentials.password = "";
+          this.setStorage();
+          this.viewShow = true;
+        };
+      });
+    }
     this.check();
   }
 
-  public check(){
-    if(this.registerCredentials.username.length==0 && this.registerCredentials.password.length==0){
-      this.viewShow=true;
+  public check() {
+    if (this.registerCredentials.username.length == 0 && this.registerCredentials.password.length == 0) {
+      this.viewShow = true;
     }
   }
-  public setStorage(){
+  public setStorage() {
     //save variables to storage as keys
-    if(this.storage.ready){
+    if (this.storage.ready) {
       console.log(this.storage.ready);
-      this.storage.set("userDetails",this.registerCredentials);
+      this.storage.set("userDetails", this.registerCredentials);
     };
-    
+
   }
 
   //when click the login button
   public login() {
     this.showLoading();
     this.auth.login(this.registerCredentials).subscribe(allowed => {
-      if (allowed!="-1") {
+      if (allowed != "-1") {
         this.setStorage();
         this.auth.setUser(allowed.username); //setting username
         if (allowed.type == "1") {
           this.nav.setRoot('EmployeeHomePage');
         } else if (allowed.type == "2") {
           this.nav.setRoot('MenubarPage');//manager will have a menubar
-        }else if(allowed.type=="3"){
+        } else if (allowed.type == "3") {
           this.nav.setRoot('AdminPage');//goes to admin page
         }
       } else {
         this.showError("Access Denied");
-        this.viewShow=true;
+        this.viewShow = true;
       }
     },
       error => {
         this.showError("Invaild Credentials");
-        this.viewShow=true;
+        this.viewShow = true;
       });
   }
 
