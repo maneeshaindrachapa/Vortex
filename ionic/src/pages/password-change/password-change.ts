@@ -14,7 +14,7 @@ export class PasswordChangePage {
   email: string;
   correct = false;
   password = "";
-  constructor(public nav: NavController, public navParams: NavParams, private fp: ForgetPasswordProvider, private alert: AlertController, private loadingCtrl: LoadingController) {
+  constructor(public nav: NavController, private fp: ForgetPasswordProvider, private alert: AlertController, private loadingCtrl: LoadingController) {
     this.email = this.fp.getEmail();
   }
 
