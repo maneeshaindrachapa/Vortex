@@ -17,8 +17,12 @@ export class ForgetpasswordPage {
     this.showLoading();
     if (this.email != "") {
       this.fp.sendEmail(this.email).subscribe(mail => {
-        this.fp.setEmail(this.email);
-        this.nav.push("PasswordChangePage");
+        if(mail=="-1"){
+          this.showError("This Email Used Account cannot Recognized");  
+        }else{  
+          this.fp.setEmail(this.email);
+          this.nav.push("PasswordChangePage");
+        }
       },
         error => {
           this.showError('There is an Error Sending Mail');
