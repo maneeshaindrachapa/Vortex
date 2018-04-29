@@ -34,8 +34,8 @@ if (sizeof($data) != 0) {
                 $mail->isSMTP(); // Set mailer to use SMTP
                 $mail->Host = gethostbyname('smtp.gmail.com'); // Specify main and backup SMTP servers
                 $mail->SMTPAuth = true; // Enable SMTP authentication
-                $mail->Username = 'maneesh.15@cse.mrt.ac.lk'; // SMTP username
-                $mail->Password = 'iloveB1224'; // SMTP password
+                $mail->Username = 'vortexmobilevotingapp@gmail.com'; // SMTP username
+                $mail->Password = 'Maneesha@123'; // SMTP password
                 $mail->SMTPSecure = 'ssl'; // Enable TLS encryption, `ssl` also accepted
                 $mail->Port = 465; // TCP port to connect to
                 $mail->SMTPOptions = array(
@@ -52,7 +52,7 @@ if (sizeof($data) != 0) {
 
                 //Content
                 $mail->isHTML(true); // Set email format to HTML
-                $mail->Subject = 'Vortex-Forget Password';
+                $mail->Subject = 'Vortex-Forgot Password';
                 $mail->Body = '<!-- THIS EMAIL WAS BUILT AND TESTED WITH LITMUS http://litmus.com -->
                 <!-- IT WAS RELEASED UNDER THE MIT LICENSE https://opensource.org/licenses/MIT -->
                 <!-- QUESTIONS? TWEET US @LITMUSAPP -->
@@ -142,7 +142,7 @@ if (sizeof($data) != 0) {
                                 <tr>
                                     <td align="center" valign="top" style="padding: 40px 10px 40px 10px;">
                                         <a href="#" target="_blank">
-                                            <img alt="Logo" src="http://maneeshaindrachapamora.000webhostapp.com/imgs/logomain.png" width="80" height="80" style="display: block; width: 100px; max-width: 100px; min-width: 40px; font-family: '.'Exo'.', sans-serif; color: #ffffff; font-size: 18px;" border="0">
+                                            <img src="https://vortexmobievotingapp.000webhostapp.com/imgs/logomain.png" width="80" height="80" style="display: block; width: 100px; max-width: 100px; min-width: 40px; font-family: '.'Exo'.', sans-serif; color: #ffffff; font-size: 18px;" border="0">
                                         </a>
                                     </td>
                                 </tr>
@@ -190,7 +190,7 @@ if (sizeof($data) != 0) {
                                 <td bgcolor="#ffffff" align="left" style="padding: 20px 30px 40px 30px; color: #666666; font-family: '.'Exo'.', sans-serif; font-size: 18px; font-weight: 400; line-height: 25px;" >
                                   <p style="margin: 0;">Hi,<br><br>
                 
-                You recently request to rest your password for your account, use the code below to reset your password. This password reset code is only valid for the next 10 minutes<br><br>
+                You recently request to reset your password for your account, use the code below to reset your password. This password reset code is only valid for the next 10 minutes<br><br>
                 
                                       <strong >'.$randomNumber.'</strong><br><br>
                 For security,If you didnot request a password reset, please ignore this email
@@ -220,7 +220,7 @@ if (sizeof($data) != 0) {
                                 <!-- COPY -->
                                 <tr>
                                   <td bgcolor="#539be2" align="left" style="padding: 0px 30px 20px 30px; color:#539be2; font-family: '.'Exo'.', sans-serif; font-size: 18px; font-weight: 400; line-height: 25px;" >
-                                    <p style="margin: 0;"> Vortex is a solution to held those ballots in an efficinet way</p>
+                                    <p style="margin: 0;"> ...................................................................</p>
                                   </td>
                                 </tr>
                                 <!-- COPY -->
