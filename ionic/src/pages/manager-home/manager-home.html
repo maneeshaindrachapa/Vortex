@@ -19,7 +19,7 @@
 
 <!--managers cannot vote so managers can see all the votingPolls on going in thier organization-->
 <ion-content class="ion-content">
-  <ion-searchbar (ionInput)="getVotingBallotDetails($event)"></ion-searchbar>
+  <ion-searchbar (ionInput)="getVotingBallotDetails($event)" *ngIf="isVotingBallots"></ion-searchbar>
 
   <!-- added a refresher to refresh page-->
   <ion-refresher (ionRefresh)="doRefresh($event)" class="ion-refresh">
@@ -52,7 +52,7 @@
           </button>
           <button ion-button icon-left clear small class="adduser-button" *ngIf="item.addEmployees" (click)="addEmployee(item.votingballotID,item.organizationID)">
             <ion-icon name="person-add" class="ionicons"></ion-icon>&nbsp;
-            <span class="ion-card-details" >Add Employees</span>
+            <span class="ion-card-details" >Add Users</span>
           </button>
           <button ion-button icon-left clear small class="delete-button" (click)="remove(item.votingballotID)">
             <ion-icon name="close-circle" class="ionicons"></ion-icon>&nbsp;
@@ -62,4 +62,5 @@
       </ion-card>
     </ion-item>
   </ion-list>
+  <h2 *ngIf="!isVotingBallots">There are no Voting Ballots, Go ahead and Create a One</h2>
 </ion-content>
