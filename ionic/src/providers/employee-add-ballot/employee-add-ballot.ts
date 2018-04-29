@@ -26,20 +26,20 @@ export class EmployeeAddBallotProvider {
   }
   //getUsers
   getUsers() {
-    return this.http.post("http://maneeshaindrachapamora.000webhostapp.com/vortex/api/AddUsersToVotingBallot/getUsers.php", JSON.stringify({ "organizationID": this.organizationID, "ballotID": this.ballotID })).map(res => res.json());
+    return this.http.post("https://vortexmobievotingapp.000webhostapp.com//vortex/api/AddUsersToVotingBallot/getUsers.php", JSON.stringify({ "organizationID": this.organizationID, "ballotID": this.ballotID })).map(res => res.json());
   }
 
   //add user to ballot
   public addUserToBallot(username, ballotID) {
-    return this.http.post("http://maneeshaindrachapamora.000webhostapp.com/vortex/api/AddUsersToVotingBallot/addUsers.php", JSON.stringify({ "username": username, "ballotID": ballotID })).map(res => res.json());
+    return this.http.post("https://vortexmobievotingapp.000webhostapp.com//vortex/api/AddUsersToVotingBallot/addUsers.php", JSON.stringify({ "username": username, "ballotID": ballotID })).map(res => res.json());
   }
 
   //remove user from ballot
   public removeUserFromBallot(username, ballotID) {
-    return this.http.post("http://maneeshaindrachapamora.000webhostapp.com/vortex/api/AddUsersToVotingBallot/removeVoters.php", JSON.stringify({ "username": username, "organizationID": this.organizationID, "ballotID": ballotID })).map(res => res.json());
+    return this.http.post("https://vortexmobievotingapp.000webhostapp.com//vortex/api/AddUsersToVotingBallot/removeVoters.php", JSON.stringify({ "username": username, "organizationID": this.organizationID, "ballotID": ballotID })).map(res => res.json());
   }
   //get voters that already added
   public getVoters() {
-    return this.http.post("http://maneeshaindrachapamora.000webhostapp.com/vortex/api/AddUsersToVotingBallot/getVoters.php", JSON.stringify({ "organizationID": this.organizationID, "ballotID": this.ballotID })).map(res => res.json());
+    return this.http.post("https://vortexmobievotingapp.000webhostapp.com//vortex/api/AddUsersToVotingBallot/getVoters.php", JSON.stringify({ "organizationID": this.organizationID, "ballotID": this.ballotID })).map(res => res.json());
   }
 }
