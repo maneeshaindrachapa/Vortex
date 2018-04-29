@@ -16,6 +16,7 @@ export class ManagerHomePage {
   currentDate = new Date();
   ballots: VotingBallots[] = [];
   items: VotingBallots[] = [];
+  isVotingBallots:boolean=true;
 
   constructor(public nav: NavController, public navParams: NavParams, private auth: AuthServiceProvider, public menuCtrl: MenuController, private EmpAddBallot: EmployeeAddBallotProvider, private ballotSer: BallotServiceProvider, private alertCtrl: AlertController) {
     this.initializeItems();
@@ -36,6 +37,11 @@ export class ManagerHomePage {
         }
         this.items.push(ballots[i]);
         this.ballots.push(ballots[i]);
+      }
+      if(this.ballots.length!=0){
+        this.isVotingBallots=true;
+      }else{
+        this.isVotingBallots=false;
       }
     },
       error => {
