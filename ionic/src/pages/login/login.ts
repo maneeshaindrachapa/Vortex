@@ -12,7 +12,7 @@ export class LoginPage {
   //declaring variables
   loading: Loading;
   registerCredentials = { username: "", password: "" };
-  viewShow: boolean = true;
+  viewShow: boolean = false;
 
   constructor(private nav: NavController, private auth: AuthServiceProvider, private alertCtrl: AlertController, private loadingCtrl: LoadingController, private storage: Storage) {
     this.getStorage();
