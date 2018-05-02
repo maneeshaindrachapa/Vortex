@@ -46,6 +46,17 @@ export class EmployeeHomePage {
     this.items = this.ballots;
   }
 
+  //refresh Page
+  doRefresh(refresher) {
+    console.log('Begin async operation', refresher);
+    this.items = [];
+    this.ballots = []; //making all the items null then runst the async operation to get new items
+    this.initializeItems();
+    setTimeout(() => {
+      refresher.complete();
+    }, 2000);
+  }
+
   //search bar function
   getVotingBallotDetails(ev: any) {
     // Reset items back to all of the items

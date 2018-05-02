@@ -17,6 +17,13 @@
 
 <ion-content>
   <ion-searchbar (ionInput)="getVotingBallotDetails($event)"></ion-searchbar>
+
+   <!-- added a refresher to refresh page-->
+   <ion-refresher (ionRefresh)="doRefresh($event)" class="ion-refresh">
+    <ion-refresher-content pullingIcon="arrow-dropdown" pullingText="Pull to refresh" refreshingSpinner="circles" refreshingText="Refreshing...">
+    </ion-refresher-content>
+  </ion-refresher>
+
   <ion-list class="ion-item">
     <ion-item *ngFor="let item of items" class="ion-item">
       <ion-card class="ion-card">
