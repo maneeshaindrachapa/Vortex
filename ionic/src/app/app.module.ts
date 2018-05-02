@@ -8,7 +8,6 @@ import { ChartsModule } from 'ng2-charts';
 import { IonicStorageModule } from '@ionic/storage';
 
 import { MyApp } from './app.component';
-import { HomePage } from '../pages/home/home';
 import { AuthServiceProvider } from '../providers/auth-service/auth-service';
 import { BallotServiceProvider } from '../providers/ballot-service/ballot-service';
 import { ForgetPasswordProvider } from '../providers/forget-password/forget-password';
@@ -17,7 +16,6 @@ import { EmployeeAddBallotProvider } from '../providers/employee-add-ballot/empl
 @NgModule({
   declarations: [
     MyApp,
-    HomePage
   ],
   imports: [
     BrowserModule,
@@ -28,8 +26,7 @@ import { EmployeeAddBallotProvider } from '../providers/employee-add-ballot/empl
   ],
   bootstrap: [IonicApp],
   entryComponents: [
-    MyApp,
-    HomePage
+    MyApp
   ],
   providers: [
     StatusBar,
