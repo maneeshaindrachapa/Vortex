@@ -17,6 +17,20 @@ export class VotingPage {
     this.getVotingOptions();
   }
 
+  help(){
+    let alert=this.alertCtrl.create({
+      title:"Help - Voting",
+      subTitle:'To vote using Vortex, Select the voting option you want to vote and click vote,you can change your vote before the time period ends. when you change the vote it will remove the vote you did earlier and save your new vote.',
+      buttons:[{
+        text:"OK",
+        role: 'cancel',
+        handler: data => {
+          console.log('Cancel clicked');
+        }
+      }]
+    });
+    alert.present();
+  }
   //get all voting options for a perticular voting ballot
   getVotingOptions() {
     this.ballotSer.getvotingOptions(this.votingBallotID).subscribe(options => {
