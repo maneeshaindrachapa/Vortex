@@ -71,23 +71,28 @@ export class LoginPage {
   public login() {
     this.showLoading();
     this.auth.login(this.registerCredentials).subscribe(allowed => {
-      if (allowed != "-1") {
-        this.setStorage();
-        this.auth.setUser(allowed.username); //setting username
-        if (allowed.type == "1") {
-          this.nav.setRoot('EmployeeHomePage');
-        } else if (allowed.type == "2") {
-          this.nav.setRoot('MenubarPage');//manager will have a menubar
-        } else if (allowed.type == "3") {
-          this.nav.setRoot('AdminPage');//goes to admin page
+      if(allowed!="-2"){
+        if (allowed != "-1") {
+          this.setStorage();
+          this.auth.setUser(allowed.username); //setting username
+          if (allowed.type == "1") {
+            this.nav.setRoot('EmployeeHomePage');
+          } else if (allowed.type == "2") {
+            this.nav.setRoot('MenubarPage');//manager will have a menubar
+          } else if (allowed.type == "3") {
+            this.nav.setRoot('AdminPage');//goes to admin page
+          }
+        } else {
+          this.showError("Access Denied");
+          this.viewShow = true;
         }
-      } else {
-        this.showError("Access Denied");
+      }else{
+        this.showError("Invaild Credentials");
         this.viewShow = true;
       }
     },
       error => {
-        this.showError("Invaild Credentials");
+        this.showError("Cannot Connect to the Internet");
         this.viewShow = true;
       });
   }
