@@ -10,7 +10,7 @@ import { ForgetPasswordProvider } from '../../providers/forget-password/forget-p
 import { HttpModule } from '@angular/http';
 import { ChartsModule } from 'ng2-charts';
 import { BrowserModule } from '@angular/platform-browser';
-import { NavMock } from '../../mocks';
+import { NavMock, LoadingControllerMock, ForgetPasswordMock } from '../../mocks';
 
 let comp: ForgetpasswordPage;
 let fixture: ComponentFixture<ForgetpasswordPage>;
@@ -21,10 +21,10 @@ describe('Page: Forgetpassword Page', () => {
         TestBed.configureTestingModule({
             declarations: [MyApp, ForgetpasswordPage],
             providers: [
-                ForgetPasswordProvider,
+                {provide:ForgetPasswordProvider,useClass:ForgetPasswordMock},
                 {provide: NavController, useClass: NavMock},
-                AlertController,
-                LoadingController
+                {provide:AlertController,useClass:LoadingControllerMock},
+                {provide:LoadingController,useClass:LoadingControllerMock}
             ],
             imports: [
                 BrowserModule,
@@ -52,14 +52,14 @@ describe('Page: Forgetpassword Page', () => {
         expect(comp).toBeTruthy();
     });
 
+    it("SendEmail Function test for a email entered", function(){
+        let forgetPW=fixture.debugElement.injector.get(ForgetpasswordPage);
+        forgetPW.email="test@gmail.com";
+        expect(forgetPW.sendEmail()).toBeTruthy;
+    });
     it("SendEmail Function test", function(){
-        let forgetPasswordService = fixture.debugElement.injector.get(ForgetPasswordProvider);
-        spyOn(forgetPasswordService, 'sendEmail')
-        fixture.detectChanges();
-
-        de = fixture.debugElement.query(By.css('.email-btn'));
-        de.triggerEventHandler('click', null);
-        expect(forgetPasswordService.sendEmail("test@123.com")).toBeTruthy;
+        let forgetPW=fixture.debugElement.injector.get(ForgetpasswordPage);
+        expect(forgetPW.sendEmail()).toBeTruthy;
     });
 
     it("setEmail Function test", function(){
