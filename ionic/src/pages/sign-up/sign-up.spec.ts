@@ -10,7 +10,7 @@ import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
 import { HttpModule } from '@angular/http';
 import { ChartsModule } from 'ng2-charts';
 import { BrowserModule } from '@angular/platform-browser';
-import { NavMock } from '../../mocks';
+import { NavMock, LoadingControllerMock, AuthServiceMock } from '../../mocks';
 import { IonicStorageModule } from '@ionic/storage';
 
 let comp: SignUpPage;
@@ -22,10 +22,10 @@ describe('Page:SignUp Page', () => {
         TestBed.configureTestingModule({
             declarations: [MyApp, SignUpPage],
             providers: [
-                AuthServiceProvider,
+                {provide:AuthServiceProvider,useClass:AuthServiceMock},
                 {provide: NavController, useClass: NavMock},
-                AlertController,
-                LoadingController
+                {provide:AlertController,useClass:LoadingControllerMock},
+                {provide:LoadingController,useClass:LoadingControllerMock}
             ],
             imports: [
                 BrowserModule,
@@ -55,21 +55,13 @@ describe('Page:SignUp Page', () => {
     });
 
     it("Register Function test", function(){
-        let authService = fixture.debugElement.injector.get(AuthServiceProvider);
-        spyOn(authService, 'register')
-        fixture.detectChanges();
-
-        //de = fixture.debugElement.query(By.css('.submit-btn'));
-        //de.triggerEventHandler('click', null);
-        expect(authService.register({ "username": "test1", "firstname": "testing-first", "lastname": "testing-last", "password": "testing-password", "email": "tsting-email", "organizationID": "1" })).toBeTruthy
+        let signFunc=fixture.debugElement.injector.get(SignUpPage);
+        expect(signFunc.register()).toBeTruthy; 
     });
 
     it("Organizations Loading Function test", function(){
-        let authService = fixture.debugElement.injector.get(AuthServiceProvider);
-        spyOn(authService, 'loadOrganizations')
-        fixture.detectChanges();
-
-        expect(authService.loadOrganizations()).toBeTruthy;
+        let signFunc=fixture.debugElement.injector.get(SignUpPage);
+        expect(signFunc.loadOrganization()).toBeTruthy;   
     });
 
     it("Show Alert Function test", function(){
