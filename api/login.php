@@ -9,9 +9,14 @@ if (sizeof($logindata) != 0) {
 
     $query = "SELECT username,password,type,accepted FROM user where username='$username' and password=MD5('$password')";
     $data = $crud->getData($query);
-    if($data[0]['accepted']==0){
-        echo json_encode("-1");
+    if(sizeof($data)!=null){
+        if($data[0]['accepted']==0){
+            echo json_encode("-1");
+        }
+        else{
+            echo json_encode($data[0]);
+        }
     }else{
-        echo json_encode($data[0]);
+        echo ("-2");
     }
 }
