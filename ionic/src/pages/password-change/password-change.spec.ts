@@ -10,7 +10,7 @@ import { ForgetPasswordProvider } from '../../providers/forget-password/forget-p
 import { HttpModule } from '@angular/http';
 import { ChartsModule } from 'ng2-charts';
 import { BrowserModule } from '@angular/platform-browser';
-import { NavMock } from '../../mocks';
+import { NavMock, LoadingControllerMock } from '../../mocks';
 
 let comp: PasswordChangePage;
 let fixture: ComponentFixture<PasswordChangePage>;
@@ -24,7 +24,7 @@ describe('Page: PasswordChange Page', () => {
                 ForgetPasswordProvider,
                 {provide: NavController, useClass: NavMock},
                 AlertController,
-                LoadingController
+                {provide:LoadingController,useClass:LoadingControllerMock}
             ],
             imports: [
                 BrowserModule,
