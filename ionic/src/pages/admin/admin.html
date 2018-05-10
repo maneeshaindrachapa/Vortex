@@ -2,10 +2,10 @@
   <ion-navbar color="dark">
     <ion-title>Admin</ion-title>
     <ion-buttons end>
-      <button ion-button (click)="logout()">
+      <button ion-button (click)="logout()" id='logout'>
         <ion-icon name="log-out"></ion-icon>
       </button>
-      <button ion-button (click)="editProfile()">
+      <button ion-button (click)="editProfile()" id='editprofile'>
         <ion-icon name="contact"></ion-icon>
       </button>
     </ion-buttons>
@@ -22,7 +22,7 @@
   <h2>Organizations,wants to Register</h2>
   <ion-item *ngFor="let organization of organizations" class="ion-item">
     <ion-buttons start>
-      <button ion-button icon-left clear small (click)="acceptOrganization(organization.organizationID)">
+      <button ion-button icon-left clear small (click)="acceptOrganization(organization.organizationID)" class='check'>
         <ion-icon name="checkmark"></ion-icon>
         <span class="span-class">{{organization.organizationName}} |&nbsp; {{organization.organizationAddress}}</span>
       </button>
