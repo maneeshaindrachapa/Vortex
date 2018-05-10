@@ -9,7 +9,7 @@ import { NavController, AlertController, LoadingController, Loading, IonicPage }
 import { HttpModule } from '@angular/http';
 import { ChartsModule } from 'ng2-charts';
 import { BrowserModule } from '@angular/platform-browser';
-import { NavMock } from '../../mocks';
+import { NavMock, EmpAddBallotMock, LoadingControllerMock } from '../../mocks';
 import { EmployeeAddBallotProvider } from '../../providers/employee-add-ballot/employee-add-ballot';
 
 let comp: AddEmployeesPage;
@@ -21,10 +21,10 @@ describe('Page: AddEmployees Page', () => {
         TestBed.configureTestingModule({
             declarations: [MyApp, AddEmployeesPage],
             providers: [
-                EmployeeAddBallotProvider,
+                {provide:EmployeeAddBallotProvider,useClass:EmpAddBallotMock},
                 {provide: NavController, useClass: NavMock},
-                AlertController,
-                LoadingController
+                {provide:AlertController,useClass:LoadingControllerMock},
+                {provide:LoadingController,useClass:LoadingControllerMock}
             ],
             imports: [
                 BrowserModule,
@@ -52,25 +52,15 @@ describe('Page: AddEmployees Page', () => {
         expect(comp).toBeTruthy();
     });
     
-    //services check
-    it("Get Users Function test", function(){
-        let empService = fixture.debugElement.injector.get(EmployeeAddBallotProvider);
-        spyOn(empService, 'getUsers')
-        fixture.detectChanges();
-        expect(empService.getUsers()).toBeTruthy;
+    it("Add user to voting ballot test", function(){
+        let addEmp=fixture.debugElement.injector.get(AddEmployeesPage);
+        expect(addEmp.addUser("maneesha")).toBeTruthy;
     });
-    it("Add Users to the ballot Function test", function(){
-        let empService = fixture.debugElement.injector.get(EmployeeAddBallotProvider);
-        spyOn(empService, 'addUserToBallot')
-        fixture.detectChanges();
-        expect(empService.addUserToBallot('maneesha','1')).toBeTruthy;
+    it("Remove Users from voting Ballot test", function(){
+        let addEmp=fixture.debugElement.injector.get(AddEmployeesPage);
+        expect(addEmp.removeUser("maneesha")).toBeTruthy;
     });
-    it("Remove Users from the ballot Function test", function(){
-        let empService = fixture.debugElement.injector.get(EmployeeAddBallotProvider);
-        spyOn(empService, 'removeUserFromBallot')
-        fixture.detectChanges();
-        expect(empService.addUserToBallot('maneesha','1')).toBeTruthy;
-    });
+
     //loading method
     it("Loading Function test", function(){
         let loading = fixture.debugElement.injector.get(LoadingController);
