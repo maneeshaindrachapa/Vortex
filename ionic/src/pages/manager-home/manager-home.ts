@@ -151,7 +151,7 @@ export class ManagerHomePage {
               this.initializeItems();
             },
               error => {
-                console.log(error);
+                //console.log(error);
               });
           }
         }

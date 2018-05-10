@@ -30,7 +30,7 @@ export class MenubarPage {
      this.requests=requests;
     },
       error => {
-       console.log("error");
+       //console.log("error");
     });
   }
 

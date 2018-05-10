@@ -62,7 +62,6 @@ export class LoginPage {
   public setStorage() {
     //save variables to storage as keys
     if (this.storage.ready) {
-      console.log(this.storage.ready);
       this.storage.set("userDetails", this.registerCredentials);
     };
 
@@ -99,6 +98,7 @@ export class LoginPage {
       dismissOnPageChange: true
     });
     this.loading.present();
+
   }
 
   showError(text) {

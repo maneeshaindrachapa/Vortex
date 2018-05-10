@@ -25,7 +25,7 @@ export class AddEmployeesPage {
       }
     },
       error => {
-        console.log(error);
+        //console.log(error);
       });
   }
 
@@ -54,7 +54,7 @@ export class AddEmployeesPage {
       }
     },
       error => {
-        console.log(error);
+        //if error happens this will be called
       });
   }
 
@@ -93,7 +93,7 @@ export class AddEmployeesPage {
       this.initializeItems();
     },
       error => {
-        console.log(error);
+        //console.log(error);
       });
   }
   //remove user from voting ballot
@@ -106,7 +106,7 @@ export class AddEmployeesPage {
       this.initializeItems();
     },
       error => {
-        console.log(error);
+        //console.log(error);
       });
   }
 
