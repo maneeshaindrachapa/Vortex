@@ -25,7 +25,7 @@ export class EmployeeAddBallotProvider {
     this.organizationID = organizationID;
   }
   //getUsers
-  getUsers() {
+  public getUsers() {
     return this.http.post("https://vortexmobievotingapp.000webhostapp.com/vortex/api/AddUsersToVotingBallot/getUsers.php", JSON.stringify({ "organizationID": this.organizationID, "ballotID": this.ballotID })).map(res => res.json());
   }
 
