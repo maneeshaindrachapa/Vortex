@@ -10,7 +10,7 @@ import { ForgetPasswordProvider } from '../../providers/forget-password/forget-p
 import { HttpModule } from '@angular/http';
 import { ChartsModule } from 'ng2-charts';
 import { BrowserModule } from '@angular/platform-browser';
-import { NavMock, LoadingControllerMock } from '../../mocks';
+import { NavMock, LoadingControllerMock, ForgetPasswordMock } from '../../mocks';
 
 let comp: PasswordChangePage;
 let fixture: ComponentFixture<PasswordChangePage>;
@@ -21,9 +21,9 @@ describe('Page: PasswordChange Page', () => {
         TestBed.configureTestingModule({
             declarations: [MyApp, PasswordChangePage],
             providers: [
-                ForgetPasswordProvider,
+                {provide:ForgetPasswordProvider,useClass:ForgetPasswordMock},
                 {provide: NavController, useClass: NavMock},
-                AlertController,
+                {provide:AlertController,useClass:LoadingControllerMock},
                 {provide:LoadingController,useClass:LoadingControllerMock}
             ],
             imports: [
@@ -52,22 +52,25 @@ describe('Page: PasswordChange Page', () => {
         expect(comp).toBeTruthy();
     });
 
-    it("CheckCode Function test", function(){
-        let forgetPasswordService = fixture.debugElement.injector.get(ForgetPasswordProvider);
-        spyOn(forgetPasswordService, 'checkCode')
-        fixture.detectChanges();
-
-        de = fixture.debugElement.query(By.css('.code-btn'));
-        de.triggerEventHandler('click', null);
-        expect(forgetPasswordService.checkCode("test@123.com","123123")).toBeTruthy;
+    it("CheckCode Function test for correct code", function(){
+        let passwordCG = fixture.debugElement.injector.get(PasswordChangePage);
+        passwordCG.code=12312323;
+        expect(passwordCG.checkCode()).toBeTruthy;
     });
 
-    it("setEmail Function test", function(){
-        let forgetPasswordService = fixture.debugElement.injector.get(ForgetPasswordProvider);
-        spyOn(forgetPasswordService, 'setEmail')
-        fixture.detectChanges();
+    it("CheckCode Function test for empty code", function(){
+        let passwordCG = fixture.debugElement.injector.get(PasswordChangePage);
+        expect(passwordCG.checkCode()).toBeTruthy;
+    });
 
-        expect(forgetPasswordService.setEmail("test@123.com")).toBeTruthy;
+    it("Change password Function test for empty password", function(){
+        let passwordCG = fixture.debugElement.injector.get(PasswordChangePage);
+        expect(passwordCG.changePassword()).toBeTruthy;    
+    });
+    it("Change password Function test for correct password", function(){
+        let passwordCG = fixture.debugElement.injector.get(PasswordChangePage);
+        passwordCG.password="123123123";
+        expect(passwordCG.changePassword()).toBeTruthy;    
     });
     //loading method
     it("Loading Function test", function(){
