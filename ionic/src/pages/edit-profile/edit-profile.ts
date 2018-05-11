@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, LoadingController, Loading, AlertController } from 'ionic-angular';
+import { IonicPage, NavController, LoadingController, Loading, AlertController } from 'ionic-angular';
 import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
 
 
@@ -14,7 +14,7 @@ export class EditProfilePage {
   userDetails = { username: '', firstname: '', lastname: '', email: '' };
   passwordDetails = { currentPassword: '', newPassword: '', confirmPassword: '' };
 
-  constructor(public nav: NavController, public navParams: NavParams, private auth: AuthServiceProvider, private alertCtrl: AlertController, private loadingCtrl: LoadingController) {
+  constructor(public nav: NavController, private auth: AuthServiceProvider, private alertCtrl: AlertController, private loadingCtrl: LoadingController) {
     this.username = this.auth.getUser();
     this.auth.getUserDetails(this.username).subscribe(user => {
       this.userDetails.username = user.username;
