@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController, LoadingController, Loading} from 'ionic-angular';
+import { IonicPage, NavController, AlertController, LoadingController, Loading} from 'ionic-angular';
 import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
 import { BallotServiceProvider } from '../../providers/ballot-service/ballot-service';
 
@@ -18,7 +18,7 @@ export class CreateVotingBallotPage {
   ballotOptionsContainer = {};
   loading: Loading;
 
-  constructor(public nav: NavController, public navParams: NavParams, private auth: AuthServiceProvider, private ballot: BallotServiceProvider, private alertCtrl: AlertController, private loadingCtrl: LoadingController) {
+  constructor(public nav: NavController, private auth: AuthServiceProvider, private ballot: BallotServiceProvider, private alertCtrl: AlertController, private loadingCtrl: LoadingController) {
     this.username = this.auth.getUser(); //getting username from auth service provider
     ballot.setUser(this.username); //set username in ballot service provider
   }
