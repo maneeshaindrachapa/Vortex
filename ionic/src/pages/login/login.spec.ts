@@ -11,7 +11,7 @@ import { HttpModule } from '@angular/http';
 import { ChartsModule } from 'ng2-charts';
 import { BrowserModule } from '@angular/platform-browser';
 import { SignUpPage } from '../sign-up/sign-up';
-import { NavMock } from '../../mocks';
+import { NavMock, AuthServiceMock, LoadingControllerMock } from '../../mocks';
 import { IonicStorageModule } from '@ionic/storage';
 import { Storage } from '@ionic/storage';
 
@@ -24,10 +24,10 @@ describe('Page:Login Page', () => {
         TestBed.configureTestingModule({
             declarations: [MyApp, LoginPage],
             providers: [
-                AuthServiceProvider,
+                {provide:AuthServiceProvider,useClass:AuthServiceMock},
                 {provide: NavController, useClass: NavMock},
-                AlertController,
-                LoadingController
+                {provide:AlertController,useClass:LoadingControllerMock},
+                {provide:LoadingController,useClass:LoadingControllerMock}
             ],
             imports: [
                 BrowserModule,
@@ -72,12 +72,7 @@ describe('Page:Login Page', () => {
     xdescribe("Login Function test",()=>{
         xit("navigate to the correct page",()=>{
             let loginFunc=fixture.debugElement.injector.get(LoginPage);
-            spyOn(loginFunc,'login');
-            fixture.detectChanges();
-            de=fixture.debugElement.query(By.css('.submit-btn'));
-            de.triggerEventHandler('click',null);
             expect(loginFunc.login()).toBeTruthy;
-            
         });
     });
 
