@@ -12,7 +12,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NavMock, LoadingControllerMock, AuthServiceMock, BallotMock } from '../../mocks';
 import { IonicStorageModule } from '@ionic/storage';
 import { Storage } from '@ionic/storage';
-import { BallotServiceProvider } from '../../providers/ballot-service/ballot-service';
 
 let comp: EditProfilePage;
 let fixture: ComponentFixture<EditProfilePage>;
