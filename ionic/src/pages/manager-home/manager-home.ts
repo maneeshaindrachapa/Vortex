@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
+import { IonicPage, NavController, AlertController } from 'ionic-angular';
 import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
 import { DateTime } from 'ionic-angular/components/datetime/datetime';
 import { MenuController } from 'ionic-angular';
@@ -18,7 +18,7 @@ export class ManagerHomePage {
   items: VotingBallots[] = [];
   isVotingBallots:boolean=true;
 
-  constructor(public nav: NavController, public navParams: NavParams, private auth: AuthServiceProvider, public menuCtrl: MenuController, private EmpAddBallot: EmployeeAddBallotProvider, private ballotSer: BallotServiceProvider, private alertCtrl: AlertController) {
+  constructor(public nav: NavController, private auth: AuthServiceProvider, public menuCtrl: MenuController, private EmpAddBallot: EmployeeAddBallotProvider, private ballotSer: BallotServiceProvider, private alertCtrl: AlertController) {
     this.initializeItems();
   }
 
@@ -121,7 +121,6 @@ export class ManagerHomePage {
   addEmployee(votingballotID, organizationID) {
     this.EmpAddBallot.setballotID(votingballotID);
     this.EmpAddBallot.setOrganizationID(organizationID);
-    console.log(votingballotID);
     this.nav.push("AddEmployeesPage");
   }
 
