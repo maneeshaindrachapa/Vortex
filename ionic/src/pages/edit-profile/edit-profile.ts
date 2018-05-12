@@ -72,7 +72,6 @@ export class EditProfilePage {
     } else {
       this.showError("Please Fill the Fields");
     }
-    console.log("ass");
   }
 
   showLoading() {
