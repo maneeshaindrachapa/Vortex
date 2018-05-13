@@ -101,6 +101,7 @@ export class ConfigMock {
     passwordDetails={"currentPassword":'123123123',"newPassword":'123123123'};
     getEmployeeVotingBallots__=[{"votingballotID":"30","organizationID":"1","votingballotName":"Test 0","votingballotDescription":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin sed augue sed enim venenatis egestas. Nulla sit amet lacus eget velit consequat convallis ac eget turpis. Morbi sed bibendum nulla, id vehicula ipsum.","startDate":"2018-03-01","startTime":"15:53:30","endDate":"2018-03-08","endTime":"07:53:30","image":"https:\/\/encrypted-tbn0.gstatic.com\/images?q=tbn:ANd9GcRJaDcCDuvFPckG9uPaFCkolwsRWZI6Av1DdwR0wQY_PpGEaVT_3A","noOfOptions":"3","publicKey":"902245","voterID":"45","username":"nipuna","votingoptionID":"35","privateKey":"7634fa43bf6b2a16d7508c17a7c7a9e0"}];
     votingballots__=[{"votingballotID":"36","organizationID":"1","votingballotName":"Test 1","votingballotDescription":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin sed augue sed enim venenatis egestas. Nulla sit amet lacus eget velit consequat convallis ac eget turpis. Morbi sed bibendum nulla, id vehicula ipsum.","startDate":"2018-05-10","startTime":"06:29:15","endDate":"2018-05-13","endTime":"06:29:15","image":"https:\/\/static.angloinfo.com\/images\/assets\/original\/d7fedd2c\/fc8c\/d7fedd2c-fc8c-4caf-93c0-ab0faf87112c.jpg","noOfOptions":"2","publicKey":"511916"},{"votingballotID":"30","organizationID":"1","votingballotName":"Test 0","votingballotDescription":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin sed augue sed enim venenatis egestas. Nulla sit amet lacus eget velit consequat convallis ac eget turpis. Morbi sed bibendum nulla, id vehicula ipsum.","startDate":"2018-03-01","startTime":"15:53:30","endDate":"2018-03-08","endTime":"07:53:30","image":"https:\/\/encrypted-tbn0.gstatic.com\/images?q=tbn:ANd9GcRJaDcCDuvFPckG9uPaFCkolwsRWZI6Av1DdwR0wQY_PpGEaVT_3A","noOfOptions":"3","publicKey":"902245"}];
+    requests_='5';
 
     //methods
     public register(registerDetails):Observable<any> {
@@ -143,6 +144,9 @@ export class ConfigMock {
     }
     public getVotingBallots():Observable<any>{
       return Observable.of(this.votingballots__);
+    }
+    public getRequestNo(username):Observable<any>{
+      return Observable.of(this.requests_);
     }
   }
 
@@ -210,7 +214,7 @@ export class ConfigMock {
     public getUser():any {return this.username};
     public setvotingballotid(votingballotid): any {return {}};
     public getvotingballotid():any {return this.votingballotid};
-    public getvotingOptions(votingballotid):Observable<any>{
+    public getvotingOptions(votingballotID):Observable<any>{
       return Observable.of(this.votingOptions);
     }
     public getResults(votingballotid,votingOptionId):Observable<any>{
